@@ -3,1868 +3,3217 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VALORIC FC | POWERED BY VALOR</title>
-<meta name="description" content="VALORIC FC — Powered by Valor. Built on passion, courage and ambition.">
+
+<title>VALORIC FC | Powered by Valor</title>
+
+<meta name="description"
+content="VALORIC FC — Powered by Valor. A football club built on passion, courage and ambition.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Orbitron:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Orbitron:wght@500;600;700;800;900&display=swap');
+
+/* =====================================================
+   VALORIC FC
+   FINAL FUTURISTIC PURPLE EDITION
+   ===================================================== */
+
 :root{
-    --purple:#9b5cff;
-    --purple2:#c084ff;
-    --purple3:#6d28d9;
+    --purple:#a855f7;
+    --purple2:#c084fc;
+    --purple3:#7e22ce;
+    --purple4:#4c1d95;
+
     --white:#ffffff;
-    --soft:#e9e4f2;
-    --gray:#aaa4b8;
-    --black:#050407;
-    --black2:#0b0810;
-    --card:rgba(18,14,25,.78);
-    --border:rgba(192,132,255,.22);
+    --soft:#f5f3ff;
+    --gray:#b8b3c7;
+
+    --black:#05030a;
+    --black2:#090611;
+    --black3:#100b18;
+
+    --border:rgba(192,132,252,.22);
+
     --shadow:0 25px 80px rgba(0,0,0,.55);
 }
+
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
 }
+
 html{
     scroll-behavior:smooth;
 }
+
 body{
     background:
-        radial-gradient(circle at 20% 10%,rgba(155,92,255,.09),transparent 25%),
-        radial-gradient(circle at 80% 70%,rgba(192,132,255,.06),transparent 28%),
+        radial-gradient(circle at 50% -10%,rgba(168,85,247,.12),transparent 35%),
         var(--black);
     color:var(--white);
     font-family:"Inter",Arial,sans-serif;
     overflow-x:hidden;
 }
+
 body::selection{
-    background:var(--purple);
-    color:white;
+    background:var(--purple2);
+    color:#000;
 }
+
 a{
     color:inherit;
     text-decoration:none;
 }
-button,input,textarea,select{
+
+button,
+input,
+textarea,
+select{
     font:inherit;
 }
-/* ---------------- SCROLLBAR ---------------- */
-::-webkit-scrollbar{
-    width:8px;
-}
-::-webkit-scrollbar-track{
-    background:#050407;
-}
-::-webkit-scrollbar-thumb{
-    background:linear-gradient(var(--purple),var(--purple3));
-    border-radius:20px;
-}
-/* ---------------- BACKGROUND ---------------- */
-.grid{
+
+
+/* =====================================================
+   BACKGROUND GRID
+   ===================================================== */
+
+.background-grid{
     position:fixed;
     inset:0;
-    pointer-events:none;
     z-index:-10;
-    opacity:.14;
-    background-image:
-        linear-gradient(rgba(192,132,255,.08) 1px,transparent 1px),
-        linear-gradient(90deg,rgba(192,132,255,.08) 1px,transparent 1px);
-    background-size:60px 60px;
-}
-.noise{
-    position:fixed;
-    inset:0;
     pointer-events:none;
-    z-index:-9;
-    opacity:.035;
-    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.6'/%3E%3C/svg%3E");
+
+    background-image:
+        linear-gradient(rgba(168,85,247,.045) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(168,85,247,.045) 1px,transparent 1px);
+
+    background-size:55px 55px;
 }
-.orb{
+
+.background-grid::after{
+    content:"";
+    position:absolute;
+    inset:0;
+
+    background:
+        radial-gradient(circle at 20% 20%,rgba(168,85,247,.08),transparent 25%),
+        radial-gradient(circle at 80% 70%,rgba(192,132,252,.06),transparent 25%);
+}
+
+
+/* =====================================================
+   PURPLE ORBS
+   ===================================================== */
+
+.glow{
     position:fixed;
-    width:520px;
-    height:520px;
+    width:550px;
+    height:550px;
     border-radius:50%;
-    filter:blur(150px);
-    opacity:.09;
-    background:var(--purple);
+    filter:blur(190px);
     pointer-events:none;
     z-index:-8;
+    opacity:.09;
 }
-.orb.one{
-    left:-280px;
-    top:20%;
+
+.glow-one{
+    left:-300px;
+    top:-250px;
+    background:var(--purple);
 }
-.orb.two{
+
+.glow-two{
     right:-300px;
-    bottom:10%;
+    bottom:-250px;
+    background:var(--purple2);
 }
-/* ---------------- FIRE / ENERGY ---------------- */
-.fire{
+
+
+/* =====================================================
+   FIRE / ENERGY EFFECT
+   ===================================================== */
+
+.energy{
     position:fixed;
     pointer-events:none;
-    z-index:50;
+    z-index:999;
     opacity:0;
-    transition:opacity .7s ease;
+    transition:opacity .35s ease;
 }
-.fire.active{
+
+body.scrolling .energy{
     opacity:1;
 }
-.fire.left,
-.fire.right{
+
+.energy-left,
+.energy-right{
     top:0;
     bottom:0;
     width:90px;
 }
-.fire.left{
+
+.energy-left{
+    left:-35px;
+}
+
+.energy-right{
+    right:-35px;
+}
+
+.energy-top,
+.energy-bottom{
     left:0;
-}
-.fire.right{
     right:0;
+    height:65px;
 }
-.fire.top,
-.fire.bottom{
-    left:0;
-    right:0;
-    height:70px;
+
+.energy-top{
+    top:-25px;
 }
-.fire.top{
-    top:0;
+
+.energy-bottom{
+    bottom:-25px;
 }
-.fire.bottom{
-    bottom:0;
-}
-.flame{
+
+.energy::before,
+.energy::after{
+    content:"";
     position:absolute;
-    width:35px;
-    height:120px;
-    border-radius:50%;
-    background:
-        radial-gradient(ellipse at center bottom,
-        rgba(255,255,255,.9) 0%,
-        rgba(192,132,255,.85) 20%,
-        rgba(125,58,255,.45) 48%,
-        transparent 75%);
-    filter:blur(8px);
-    animation:flameMove 1.5s ease-in-out infinite alternate;
+    display:block;
 }
-.left .flame{
+
+.energy-left::before,
+.energy-right::before{
+    top:0;
+    bottom:0;
+    width:100%;
+    background:
+        radial-gradient(
+            ellipse at center,
+            rgba(192,132,252,.65) 0%,
+            rgba(168,85,247,.25) 35%,
+            transparent 72%
+        );
+    filter:blur(13px);
+    animation:fireMove 1.1s ease-in-out infinite alternate;
+}
+
+.energy-left::after,
+.energy-right::after{
+    top:0;
+    bottom:0;
+    width:45px;
+    background:
+        linear-gradient(
+            180deg,
+            transparent,
+            rgba(192,132,252,.55),
+            transparent,
+            rgba(168,85,247,.65),
+            transparent
+        );
+    filter:blur(10px);
+    animation:fireRise .8s linear infinite;
+}
+
+.energy-left::before,
+.energy-left::after{
     left:0;
 }
-.right .flame{
+
+.energy-right::before,
+.energy-right::after{
     right:0;
 }
-.top .flame{
-    top:0;
-    transform:rotate(180deg);
+
+.energy-top::before,
+.energy-bottom::before{
+    left:0;
+    right:0;
+    height:100%;
+    background:
+        radial-gradient(
+            ellipse at center,
+            rgba(192,132,252,.55),
+            transparent 70%
+        );
+    filter:blur(14px);
+    animation:fireMove 1.2s ease-in-out infinite alternate;
 }
-.bottom .flame{
+
+.energy-top::after,
+.energy-bottom::after{
+    left:5%;
+    right:5%;
+    height:30px;
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(168,85,247,.7),
+            transparent,
+            rgba(192,132,252,.65),
+            transparent
+        );
+    filter:blur(10px);
+    animation:fireSlide 1.4s linear infinite;
+}
+
+.energy-top::before,
+.energy-top::after{
+    top:0;
+}
+
+.energy-bottom::before,
+.energy-bottom::after{
     bottom:0;
 }
-@keyframes flameMove{
+
+@keyframes fireMove{
     from{
-        transform:translateY(18px) scale(.75) rotate(-5deg);
+        transform:scaleY(.75) scaleX(.8);
     }
     to{
-        transform:translateY(-25px) scale(1.25) rotate(7deg);
+        transform:scaleY(1.15) scaleX(1.1);
     }
 }
-/* ---------------- CIRCULAR DECOR ---------------- */
-.circle{
+
+@keyframes fireRise{
+    from{
+        transform:translateY(35px);
+        opacity:.2;
+    }
+    to{
+        transform:translateY(-35px);
+        opacity:1;
+    }
+}
+
+@keyframes fireSlide{
+    from{
+        transform:translateX(-12%);
+    }
+    to{
+        transform:translateX(12%);
+    }
+}
+
+
+/* =====================================================
+   CIRCULAR DESIGN
+   ===================================================== */
+
+.circle-design{
     position:absolute;
-    border:1px solid rgba(192,132,255,.15);
     border-radius:50%;
+    border:1px solid rgba(192,132,252,.14);
     pointer-events:none;
 }
-.circle.one{
-    width:600px;
-    height:600px;
+
+.circle-one{
+    width:650px;
+    height:650px;
     left:50%;
     top:50%;
     transform:translate(-50%,-50%);
+    animation:circlePulse 7s ease-in-out infinite;
 }
-.circle.two{
-    width:430px;
-    height:430px;
+
+.circle-two{
+    width:480px;
+    height:480px;
     left:50%;
     top:50%;
     transform:translate(-50%,-50%);
     border-style:dashed;
-    animation:spin 25s linear infinite;
+    animation:circleRotate 30s linear infinite;
 }
-.circle.three{
-    width:760px;
-    height:760px;
+
+.circle-three{
+    width:780px;
+    height:780px;
     left:50%;
     top:50%;
     transform:translate(-50%,-50%);
-    border-color:rgba(192,132,255,.06);
+    opacity:.5;
+    animation:circleRotateReverse 45s linear infinite;
 }
-@keyframes spin{
-    to{
-        transform:translate(-50%,-50%) rotate(360deg);
-    }
+
+@keyframes circlePulse{
+    0%,100%{transform:translate(-50%,-50%) scale(1)}
+    50%{transform:translate(-50%,-50%) scale(1.05)}
 }
-/* ---------------- LOADER ---------------- */
+
+@keyframes circleRotate{
+    from{transform:translate(-50%,-50%) rotate(0deg)}
+    to{transform:translate(-50%,-50%) rotate(360deg)}
+}
+
+@keyframes circleRotateReverse{
+    from{transform:translate(-50%,-50%) rotate(360deg)}
+    to{transform:translate(-50%,-50%) rotate(0deg)}
+}
+
+
+/* =====================================================
+   LOADER
+   ===================================================== */
+
 #loader{
     position:fixed;
     inset:0;
-    background:#050407;
-    z-index:9999;
+    background:#05030a;
+    z-index:10000;
     display:flex;
-    align-items:center;
     justify-content:center;
-    transition:opacity .8s ease,visibility .8s ease;
+    align-items:center;
+    transition:opacity .7s ease,visibility .7s ease;
 }
-.loader-box{
+
+.loader-content{
     text-align:center;
 }
-.loader-ring{
-    width:85px;
-    height:85px;
+
+.loader-logo{
+    width:95px;
+    height:95px;
     border-radius:50%;
-    border:2px solid rgba(192,132,255,.15);
+    border:2px solid rgba(192,132,252,.15);
     border-top-color:var(--purple2);
     border-right-color:var(--purple);
-    animation:spinLoader 1s linear infinite;
-    margin:auto;
+    animation:spin 1s linear infinite;
+    margin:auto auto 25px;
+    box-shadow:0 0 45px rgba(168,85,247,.25);
 }
-.loader-name{
-    margin-top:25px;
-    font-family:"Orbitron";
-    font-size:14px;
+
+.loader-text{
+    font-family:"Orbitron",sans-serif;
     letter-spacing:5px;
+    font-size:13px;
     font-weight:800;
     color:var(--purple2);
 }
-@keyframes spinLoader{
-    to{transform:rotate(360deg);}
+
+@keyframes spin{
+    to{transform:rotate(360deg)}
 }
-/* ---------------- NAVIGATION ---------------- */
+
+
+/* =====================================================
+   NAVIGATION
+   ===================================================== */
+
 .navbar{
     position:fixed;
-    top:15px;
-    left:4%;
-    right:4%;
-    height:72px;
-    padding:0 22px;
+    top:0;
+    left:0;
+    width:100%;
+    height:78px;
+    z-index:2000;
+
     display:flex;
     align-items:center;
     justify-content:space-between;
-    background:rgba(7,5,10,.78);
-    backdrop-filter:blur(25px);
-    border:1px solid rgba(192,132,255,.16);
-    border-radius:18px;
-    z-index:1000;
-    box-shadow:0 15px 50px rgba(0,0,0,.35);
+
+    padding:0 7%;
+
+    background:rgba(5,3,10,.72);
+    backdrop-filter:blur(22px);
+
+    border-bottom:1px solid rgba(255,255,255,.06);
 }
-.brand{
+
+.nav-brand{
     display:flex;
     align-items:center;
     gap:12px;
 }
-.brand img{
-    width:45px;
-    height:45px;
-    object-fit:contain;
+
+.mini-logo{
+    width:43px;
+    height:43px;
     border-radius:12px;
-}
-.brand-name{
-    font-family:"Orbitron";
-    font-weight:900;
-    font-size:15px;
-    letter-spacing:2px;
-}
-.brand-name span{
-    color:var(--purple2);
-}
-.nav-links{
-    display:flex;
-    align-items:center;
-    gap:25px;
-    list-style:none;
-}
-.nav-links a{
-    font-size:13px;
-    font-weight:700;
-    color:#bdb6c9;
-    transition:.3s;
-}
-.nav-links a:hover{
-    color:var(--purple2);
-}
-.nav-cta{
-    padding:11px 17px;
-    background:linear-gradient(135deg,var(--purple2),var(--purple3));
-    color:white!important;
-    border-radius:10px;
-    box-shadow:0 0 25px rgba(155,92,255,.18);
-}
-.menu-btn{
-    display:none;
-    width:45px;
-    height:45px;
-    border:1px solid var(--border);
-    border-radius:11px;
-    background:rgba(255,255,255,.03);
-    color:white;
-    cursor:pointer;
-    font-size:22px;
-}
-/* ---------------- HERO ---------------- */
-.hero{
-    min-height:100vh;
-    position:relative;
+
     display:flex;
     align-items:center;
     justify-content:center;
-    text-align:center;
-    padding:150px 20px 100px;
+
     overflow:hidden;
+
+    background:linear-gradient(
+        135deg,
+        rgba(168,85,247,.2),
+        rgba(255,255,255,.04)
+    );
+
+    border:1px solid var(--border);
 }
+
+.mini-logo img{
+    width:100%;
+    height:100%;
+    object-fit:contain;
+}
+
+.brand-text{
+    font-family:"Orbitron",sans-serif;
+    font-size:15px;
+    font-weight:900;
+    letter-spacing:2px;
+}
+
+.brand-text span{
+    color:var(--purple2);
+}
+
+.nav-links{
+    display:flex;
+    align-items:center;
+    gap:27px;
+    list-style:none;
+}
+
+.nav-links a{
+    font-size:13px;
+    font-weight:800;
+    color:#c9c3d3;
+    transition:.25s;
+}
+
+.nav-links a:hover{
+    color:var(--purple2);
+}
+
+.nav-button{
+    background:var(--white);
+    color:#08050d !important;
+    padding:11px 18px;
+    border-radius:9px;
+}
+
+.nav-button:hover{
+    box-shadow:0 0 30px rgba(192,132,252,.35);
+}
+
+.mobile-menu-button{
+    display:none;
+
+    width:45px;
+    height:45px;
+
+    border:1px solid var(--border);
+    border-radius:10px;
+
+    background:rgba(255,255,255,.03);
+    color:white;
+
+    cursor:pointer;
+    font-size:21px;
+}
+
+
+/* =====================================================
+   MOBILE MENU
+   ===================================================== */
+
+.mobile-menu{
+    position:fixed;
+    top:78px;
+    right:5%;
+    width:250px;
+
+    background:rgba(10,6,17,.97);
+    backdrop-filter:blur(20px);
+
+    border:1px solid var(--border);
+    border-radius:18px;
+
+    padding:15px;
+
+    opacity:0;
+    visibility:hidden;
+    transform:translateY(-15px);
+
+    transition:.3s;
+
+    z-index:1999;
+}
+
+.mobile-menu.active{
+    opacity:1;
+    visibility:visible;
+    transform:translateY(0);
+}
+
+.mobile-menu a{
+    display:block;
+    padding:14px;
+    border-radius:10px;
+    color:#ddd6e8;
+    font-weight:800;
+}
+
+.mobile-menu a:hover{
+    background:rgba(168,85,247,.12);
+    color:var(--purple2);
+}
+
+
+/* =====================================================
+   GENERAL
+   ===================================================== */
+
+section{
+    padding:115px 8%;
+    position:relative;
+}
+
+.container{
+    max-width:1300px;
+    margin:auto;
+}
+
+.section-tag{
+    color:var(--purple2);
+    font-family:"Orbitron",sans-serif;
+    font-weight:800;
+    font-size:11px;
+    letter-spacing:3px;
+    margin-bottom:15px;
+}
+
+.section-title{
+    font-family:"Orbitron",sans-serif;
+    font-size:clamp(32px,5vw,58px);
+    line-height:1.15;
+    font-weight:900;
+    letter-spacing:1px;
+    margin-bottom:22px;
+}
+
+.section-title span{
+    color:var(--purple2);
+}
+
+.section-description{
+    color:var(--gray);
+    line-height:1.8;
+    font-size:15px;
+    font-weight:600;
+    max-width:700px;
+}
+
+
+/* =====================================================
+   HERO
+   ===================================================== */
+
+.hero{
+    min-height:100vh;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    text-align:center;
+
+    overflow:hidden;
+    padding-top:150px;
+}
+
 .hero-content{
     position:relative;
     z-index:5;
     max-width:1000px;
 }
-.badge{
+
+.hero-badge{
     display:inline-flex;
     align-items:center;
     gap:9px;
-    padding:10px 17px;
+
+    padding:9px 16px;
+
     border:1px solid var(--border);
     border-radius:50px;
-    background:rgba(155,92,255,.07);
+
+    background:rgba(168,85,247,.06);
+
     color:var(--purple2);
+
     font-size:11px;
-    font-weight:800;
-    letter-spacing:3px;
-    margin-bottom:30px;
+    font-weight:900;
+    letter-spacing:2px;
+
+    margin-bottom:28px;
 }
-.dot{
+
+.status-dot{
     width:8px;
     height:8px;
-    border-radius:50%;
     background:var(--purple2);
-    box-shadow:0 0 16px var(--purple2);
-    animation:pulse 1.4s infinite;
+    border-radius:50%;
+    box-shadow:0 0 15px var(--purple2);
+    animation:blink 1.5s infinite;
 }
-@keyframes pulse{
-    50%{opacity:.3;}
+
+@keyframes blink{
+    50%{opacity:.3}
 }
+
 .hero-logo{
-    width:175px;
-    height:175px;
+    width:155px;
+    height:155px;
+
+    margin:0 auto 27px;
+
+    border-radius:35px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:
+        radial-gradient(circle,rgba(192,132,252,.13),transparent 70%),
+        rgba(255,255,255,.025);
+
+    border:1px solid rgba(192,132,252,.28);
+
+    box-shadow:
+        0 0 90px rgba(168,85,247,.17),
+        inset 0 0 45px rgba(168,85,247,.06);
+
+    animation:heroFloat 5s ease-in-out infinite;
+}
+
+.hero-logo img{
+    width:88%;
+    height:88%;
     object-fit:contain;
-    margin:0 auto 25px;
-    filter:drop-shadow(0 0 35px rgba(155,92,255,.4));
-    animation:logoFloat 5s ease-in-out infinite;
 }
-@keyframes logoFloat{
-    0%,100%{transform:translateY(0) rotate(0deg);}
-    50%{transform:translateY(-12px) rotate(2deg);}
+
+@keyframes heroFloat{
+    0%,100%{transform:translateY(0)}
+    50%{transform:translateY(-10px)}
 }
+
 .hero h1{
-    font-family:"Orbitron";
-    font-size:clamp(50px,10vw,115px);
+    font-family:"Orbitron",sans-serif;
+    font-size:clamp(48px,10vw,118px);
     font-weight:900;
-    letter-spacing:5px;
     line-height:1;
+    letter-spacing:5px;
+    margin-bottom:22px;
 }
+
 .hero h1 span{
     color:var(--purple2);
-    text-shadow:0 0 35px rgba(192,132,255,.35);
+    text-shadow:0 0 35px rgba(192,132,252,.3);
 }
-.motto{
-    margin:22px 0 25px;
-    font-family:"Orbitron";
-    font-size:clamp(13px,2vw,19px);
-    letter-spacing:6px;
-    color:#eee9f5;
-    font-weight:700;
+
+.hero-motto{
+    color:#eeeafa;
+    font-family:"Orbitron",sans-serif;
+    font-weight:800;
+    letter-spacing:7px;
+    text-transform:uppercase;
+    font-size:clamp(12px,2vw,18px);
+    margin-bottom:28px;
 }
+
 .hero-description{
-    max-width:650px;
+    max-width:680px;
     margin:auto;
+
     color:var(--gray);
+
     line-height:1.8;
     font-size:15px;
+    font-weight:600;
 }
+
 .hero-buttons{
     display:flex;
     justify-content:center;
     gap:14px;
-    margin-top:35px;
     flex-wrap:wrap;
+    margin-top:35px;
 }
-.btn{
+
+.button{
     display:inline-flex;
     align-items:center;
     justify-content:center;
+
     padding:15px 24px;
+
     border-radius:11px;
+
     font-size:13px;
     font-weight:900;
-    border:1px solid transparent;
+
     cursor:pointer;
+
+    border:none;
+
     transition:.3s;
 }
-.btn-primary{
-    background:linear-gradient(135deg,var(--purple2),var(--purple3));
-    color:white;
-    box-shadow:0 15px 40px rgba(109,40,217,.25);
+
+.button-primary{
+    background:var(--white);
+    color:#07050a;
 }
-.btn-primary:hover{
-    transform:translateY(-5px);
-    box-shadow:0 20px 50px rgba(155,92,255,.35);
+
+.button-primary:hover{
+    transform:translateY(-4px);
+    box-shadow:0 18px 45px rgba(255,255,255,.14);
 }
-.btn-secondary{
-    border-color:rgba(255,255,255,.12);
+
+.button-secondary{
     background:rgba(255,255,255,.035);
+    color:white;
+    border:1px solid rgba(255,255,255,.12);
 }
-.btn-secondary:hover{
-    border-color:var(--purple2);
+
+.button-secondary:hover{
     color:var(--purple2);
-    transform:translateY(-5px);
+    border-color:var(--purple2);
+    transform:translateY(-3px);
 }
-.scroll{
+
+.hero-scroll{
     position:absolute;
-    bottom:25px;
+    bottom:27px;
     left:50%;
     transform:translateX(-50%);
+
     color:#777080;
-    font-size:9px;
-    letter-spacing:4px;
+    font-size:10px;
+    font-weight:800;
+    letter-spacing:3px;
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:10px;
 }
+
 .scroll-line{
     width:1px;
     height:45px;
-    margin:10px auto 0;
     background:linear-gradient(var(--purple2),transparent);
 }
-/* ---------------- SECTIONS ---------------- */
-section{
-    padding:115px 7%;
-    position:relative;
-}
-.container{
-    max-width:1250px;
-    margin:auto;
-}
-.tag{
-    color:var(--purple2);
-    font-family:"Orbitron";
-    font-size:11px;
-    letter-spacing:3px;
-    font-weight:700;
-    margin-bottom:14px;
-}
-.title{
-    font-family:"Orbitron";
-    font-size:clamp(32px,5vw,58px);
-    line-height:1.15;
-    font-weight:900;
-    margin-bottom:20px;
-}
-.title span{
-    color:var(--purple2);
-}
-.description{
-    color:var(--gray);
-    line-height:1.8;
-    max-width:700px;
-    font-size:15px;
-}
-/* ---------------- ABOUT ---------------- */
-.about{
+
+
+/* =====================================================
+   ABOUT
+   ===================================================== */
+
+.about-section{
     background:
-        linear-gradient(180deg,#09070c,#050407);
+        linear-gradient(
+            180deg,
+            rgba(168,85,247,.045),
+            transparent
+        );
 }
+
 .about-grid{
     display:grid;
-    grid-template-columns:1fr 1fr;
+    grid-template-columns:1.1fr .9fr;
     gap:70px;
     align-items:center;
 }
+
+.about-text{
+    margin-top:25px;
+}
+
 .about-text p{
     color:var(--gray);
     line-height:1.9;
-    margin-top:18px;
-    font-size:15px;
+    margin-bottom:18px;
+    font-weight:600;
 }
+
 .about-text strong{
     color:var(--purple2);
 }
-.about-card{
-    min-height:420px;
+
+.about-visual{
+    min-height:400px;
+    border-radius:27px;
+
+    background:
+        radial-gradient(circle at 50% 50%,rgba(168,85,247,.15),transparent 45%),
+        #0c0812;
+
     border:1px solid var(--border);
-    border-radius:25px;
-    position:relative;
-    overflow:hidden;
+
     display:flex;
     align-items:center;
     justify-content:center;
-    background:
-        radial-gradient(circle,rgba(155,92,255,.16),transparent 45%),
-        #0b0810;
-    box-shadow:var(--shadow);
+
+    overflow:hidden;
+    position:relative;
 }
-.about-card img{
-    width:180px;
-    height:180px;
+
+.about-visual::before{
+    content:"";
+    position:absolute;
+    width:260px;
+    height:260px;
+    border-radius:50%;
+    border:1px dashed rgba(192,132,252,.25);
+    animation:circleRotate 20s linear infinite;
+}
+
+.about-visual::after{
+    content:"";
+    position:absolute;
+    width:160px;
+    height:160px;
+    border-radius:50%;
+    border:1px solid rgba(192,132,252,.2);
+    animation:circlePulse 4s ease-in-out infinite;
+}
+
+.about-visual img{
+    width:150px;
+    height:150px;
     object-fit:contain;
     position:relative;
     z-index:3;
-    filter:drop-shadow(0 0 40px rgba(155,92,255,.35));
+    filter:drop-shadow(0 0 35px rgba(168,85,247,.3));
 }
-/* ---------------- STATS ---------------- */
-.stats{
-    padding-top:45px;
+
+
+/* =====================================================
+   STATS
+   ===================================================== */
+
+.stats-section{
+    padding-top:35px;
     padding-bottom:45px;
 }
+
 .stats-grid{
     display:grid;
     grid-template-columns:repeat(4,1fr);
     gap:15px;
 }
-.stat{
-    padding:32px 15px;
+
+.stat-card{
+    padding:31px 20px;
     text-align:center;
-    background:var(--card);
-    border:1px solid rgba(255,255,255,.07);
+
     border-radius:17px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.045),
+            rgba(168,85,247,.035)
+        );
+
+    border:1px solid rgba(255,255,255,.07);
+
     transition:.35s;
 }
-.stat:hover{
+
+.stat-card:hover{
     transform:translateY(-7px);
     border-color:var(--border);
+    box-shadow:0 15px 45px rgba(168,85,247,.08);
 }
+
 .stat-number{
-    font-family:"Orbitron";
     color:var(--purple2);
+    font-family:"Orbitron",sans-serif;
     font-size:36px;
     font-weight:900;
 }
+
 .stat-label{
-    color:var(--gray);
     margin-top:8px;
+    color:var(--gray);
     font-size:13px;
-    font-weight:600;
+    font-weight:700;
 }
-/* ---------------- LEADERSHIP ---------------- */
-.leaders{
-    background:#07050a;
+
+
+/* =====================================================
+   PLAYERS
+   ===================================================== */
+
+.players-section{
+    background:#08050d;
 }
-.leader-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:20px;
-    margin-top:45px;
-}
-.leader-card{
-    padding:28px;
-    border-radius:20px;
-    background:var(--card);
-    border:1px solid rgba(255,255,255,.08);
-    display:flex;
-    align-items:center;
-    gap:25px;
-}
-.leader-card img{
-    width:105px;
-    height:105px;
-    object-fit:cover;
-    border-radius:18px;
-    border:1px solid var(--border);
-    box-shadow:0 0 35px rgba(155,92,255,.18);
-}
-.leader-role{
-    color:var(--purple2);
-    font-size:11px;
-    font-weight:800;
-    letter-spacing:2px;
-    margin-bottom:7px;
-}
-.leader-name{
-    font-family:"Orbitron";
-    font-size:20px;
-    font-weight:900;
-}
-/* ---------------- PLAYERS ---------------- */
-.players{
-    background:
-        radial-gradient(circle at 90% 20%,rgba(155,92,255,.08),transparent 30%),
-        #08060b;
-}
-.section-head{
+
+.section-header{
     display:flex;
     justify-content:space-between;
     align-items:end;
     gap:30px;
     margin-bottom:45px;
 }
+
 .players-grid{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(215px,1fr));
-    gap:18px;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
 }
-.player{
-    background:var(--card);
-    border:1px solid rgba(255,255,255,.07);
-    border-radius:18px;
+
+.player-card{
+    background:
+        linear-gradient(
+            145deg,
+            #130d1b,
+            #08050c
+        );
+
+    border:1px solid rgba(255,255,255,.075);
+
+    border-radius:19px;
+
     overflow:hidden;
+
+    position:relative;
+
     transition:.4s;
 }
-.player:hover{
-    transform:translateY(-9px);
-    border-color:rgba(192,132,255,.4);
+
+.player-card:hover{
+    transform:translateY(-10px);
+    border-color:rgba(192,132,252,.38);
     box-shadow:var(--shadow);
 }
+
 .player-photo{
-    height:225px;
+    height:275px;
+
     display:flex;
     align-items:center;
     justify-content:center;
-    background:
-        radial-gradient(circle at center,rgba(155,92,255,.18),transparent 60%),
-        #0b0810;
+
     position:relative;
     overflow:hidden;
+
+    background:
+        radial-gradient(circle at 50% 40%,rgba(168,85,247,.2),transparent 45%),
+        linear-gradient(145deg,#180d22,#07050a);
 }
-.player-photo.captain{
-    height:300px;
+
+.player-photo::before{
+    content:"";
+    position:absolute;
+    width:230px;
+    height:230px;
+    border-radius:50%;
+    border:1px solid rgba(192,132,252,.12);
+    animation:circlePulse 5s ease-in-out infinite;
 }
+
 .player-photo img{
     width:100%;
     height:100%;
     object-fit:cover;
+    position:relative;
+    z-index:2;
 }
+
 .player-number{
     position:absolute;
-    right:13px;
     top:13px;
-    font-family:"Orbitron";
-    font-size:25px;
+    right:15px;
+    z-index:4;
+
+    font-family:"Orbitron",sans-serif;
+    font-size:28px;
     font-weight:900;
-    color:rgba(255,255,255,.3);
-    z-index:3;
+
+    color:rgba(255,255,255,.35);
 }
+
 .player-info{
-    padding:18px;
+    padding:21px;
 }
+
 .player-name{
-    font-family:"Orbitron";
-    font-size:15px;
+    font-family:"Orbitron",sans-serif;
+    font-size:16px;
     font-weight:900;
+    margin-bottom:8px;
 }
+
 .player-position{
     color:var(--purple2);
     font-size:11px;
-    font-weight:800;
-    letter-spacing:1px;
-    margin-top:7px;
+    font-weight:900;
+    letter-spacing:1.5px;
 }
-/* ---------------- TOP SCORER ---------------- */
-.scorer{
-    margin-top:30px;
-    padding:28px;
-    border-radius:20px;
-    border:1px solid rgba(192,132,255,.22);
+
+.captain-badge{
+    display:inline-block;
+    margin-top:10px;
+    padding:5px 8px;
+    border-radius:6px;
+    background:rgba(168,85,247,.12);
+    color:var(--purple2);
+    font-size:9px;
+    font-weight:900;
+    letter-spacing:1px;
+}
+
+
+/* =====================================================
+   JOURNEY / MATCH HISTORY
+   ===================================================== */
+
+.journey-section{
     background:
-        linear-gradient(135deg,rgba(155,92,255,.12),rgba(255,255,255,.025));
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
+        radial-gradient(circle at 50% 0%,rgba(168,85,247,.08),transparent 35%);
+}
+
+.journey-box{
+    margin-top:45px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
     gap:20px;
 }
-.scorer-left{
-    display:flex;
-    align-items:center;
-    gap:18px;
+
+.journey-card{
+    padding:35px;
+    border-radius:19px;
+
+    background:
+        linear-gradient(145deg,#120b19,#08050b);
+
+    border:1px solid rgba(255,255,255,.07);
+
+    transition:.35s;
 }
-.scorer-icon{
+
+.journey-card:hover{
+    transform:translateY(-6px);
+    border-color:var(--border);
+}
+
+.journey-icon{
     width:55px;
     height:55px;
-    border-radius:15px;
+
     display:flex;
     align-items:center;
     justify-content:center;
-    background:rgba(155,92,255,.13);
-    font-size:25px;
-}
-.scorer-title{
-    font-family:"Orbitron";
-    font-size:14px;
-    font-weight:900;
-}
-.scorer-name{
-    color:var(--purple2);
-    font-size:12px;
-    font-weight:800;
-    margin-top:5px;
-}
-/* ---------------- JOURNEY ---------------- */
-.journey{
-    background:#050407;
-}
-.journey-grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:20px;
-    margin-top:45px;
-}
-.journey-card{
-    padding:32px;
-    border-radius:19px;
-    border:1px solid rgba(255,255,255,.07);
-    background:linear-gradient(145deg,#120d19,#08060b);
-    transition:.35s;
-}
-.journey-card:hover{
-    transform:translateY(-8px);
-    border-color:var(--border);
-}
-.journey-icon{
-    font-size:27px;
+
+    border-radius:14px;
+
+    background:rgba(168,85,247,.1);
+
+    font-size:24px;
+
     margin-bottom:20px;
 }
+
 .journey-card h3{
-    font-family:"Orbitron";
-    font-size:16px;
-    margin-bottom:11px;
+    font-family:"Orbitron",sans-serif;
+    font-size:17px;
+    font-weight:900;
+    margin-bottom:12px;
 }
+
 .journey-card p{
     color:var(--gray);
-    line-height:1.7;
+    line-height:1.75;
     font-size:14px;
+    font-weight:600;
 }
-/* ---------------- GALLERY / VIDEOS ---------------- */
-.gallery{
-    background:#08060b;
+
+.top-scorer{
+    margin-top:35px;
+    padding:22px 25px;
+
+    border-left:3px solid var(--purple2);
+
+    background:rgba(168,85,247,.055);
+
+    border-radius:10px;
+
+    color:#ddd7e7;
+    font-weight:800;
 }
+
+.top-scorer span{
+    color:var(--purple2);
+}
+
+
+/* =====================================================
+   HIGHLIGHTS
+   ===================================================== */
+
+.highlights-section{
+    background:#07040b;
+}
+
+.video-grid{
+    margin-top:45px;
+
+    display:grid;
+    grid-template-columns:2fr 1fr;
+    gap:20px;
+}
+
+.video-card{
+    min-height:270px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:20px;
+
+    border:1px solid rgba(255,255,255,.07);
+
+    background:
+        radial-gradient(circle at center,rgba(168,85,247,.13),transparent 45%),
+        #0d0813;
+
+    position:relative;
+    overflow:hidden;
+}
+
+.video-card::before{
+    content:"";
+    position:absolute;
+    width:300px;
+    height:300px;
+    border-radius:50%;
+    border:1px dashed rgba(192,132,252,.15);
+    animation:circleRotate 18s linear infinite;
+}
+
+.play-button{
+    width:72px;
+    height:72px;
+    border-radius:50%;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(192,132,252,.35);
+
+    font-size:25px;
+
+    position:relative;
+    z-index:2;
+
+    box-shadow:0 0 35px rgba(168,85,247,.15);
+}
+
+.video-label{
+    position:absolute;
+    bottom:20px;
+    left:20px;
+    font-family:"Orbitron",sans-serif;
+    font-weight:900;
+    font-size:13px;
+    letter-spacing:1px;
+}
+
+
+/* =====================================================
+   GALLERY
+   ===================================================== */
+
+.gallery-section{
+    background:
+        linear-gradient(
+            180deg,
+            #09060e,
+            #05030a
+        );
+}
+
 .gallery-grid{
     display:grid;
     grid-template-columns:repeat(4,1fr);
+    grid-auto-rows:210px;
     gap:15px;
     margin-top:45px;
 }
+
 .gallery-item{
-    min-height:190px;
     border-radius:18px;
-    border:1px solid rgba(192,132,255,.12);
+    border:1px solid rgba(192,132,252,.12);
+
     background:
-        radial-gradient(circle,rgba(155,92,255,.13),transparent 55%),
-        #0c0910;
+        radial-gradient(circle,rgba(168,85,247,.14),transparent 50%),
+        #0d0813;
+
     display:flex;
     align-items:center;
     justify-content:center;
-    text-align:center;
-    color:var(--gray);
-    font-size:12px;
-    font-weight:700;
+
+    overflow:hidden;
+    position:relative;
+
     transition:.35s;
 }
+
+.gallery-item:hover{
+    transform:scale(1.02);
+    border-color:rgba(192,132,252,.35);
+}
+
 .gallery-item.large{
     grid-column:span 2;
     grid-row:span 2;
 }
-.gallery-item:hover{
-    transform:scale(1.02);
-    border-color:var(--border);
-}
-.gallery-item span{
-    display:block;
-    font-size:30px;
-    margin-bottom:10px;
-}
-.video-box{
-    margin-top:30px;
-    min-height:300px;
-    border:1px dashed rgba(192,132,255,.3);
-    border-radius:22px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
+
+.gallery-placeholder{
+    color:#a9a0b5;
+    font-size:12px;
+    font-weight:800;
+    letter-spacing:1px;
     text-align:center;
-    background:rgba(155,92,255,.035);
 }
-.video-box h3{
-    font-family:"Orbitron";
+
+.gallery-placeholder span{
+    display:block;
+    font-size:36px;
     margin-bottom:10px;
 }
-.video-box p{
-    color:var(--gray);
-    font-size:13px;
-}
-/* ---------------- BOOKING ---------------- */
-.booking{
+
+
+/* =====================================================
+   BOOKING
+   ===================================================== */
+
+.booking-section{
     background:
-        radial-gradient(circle at 10% 20%,rgba(155,92,255,.1),transparent 35%),
-        #050407;
+        radial-gradient(circle at 0% 50%,rgba(168,85,247,.1),transparent 35%),
+        #05030a;
 }
-.booking-grid{
+
+.booking-layout{
     display:grid;
-    grid-template-columns:.75fr 1.25fr;
+    grid-template-columns:.8fr 1.2fr;
     gap:60px;
     align-items:start;
 }
-.points{
+
+.booking-info{
+    position:sticky;
+    top:105px;
+}
+
+.booking-points{
     list-style:none;
     margin-top:30px;
 }
-.points li{
-    color:var(--gray);
-    margin-bottom:17px;
-    font-size:14px;
+
+.booking-points li{
     display:flex;
     align-items:center;
     gap:12px;
+
+    color:var(--gray);
+
+    margin-bottom:16px;
+
+    font-size:14px;
+    font-weight:700;
 }
+
 .check{
     width:24px;
     height:24px;
     border-radius:7px;
+
     display:flex;
     align-items:center;
     justify-content:center;
-    background:rgba(155,92,255,.1);
+
+    background:rgba(168,85,247,.1);
     color:var(--purple2);
 }
-.form{
-    padding:34px;
-    border-radius:22px;
+
+.booking-form{
+    padding:35px;
+
+    border-radius:21px;
+
+    background:
+        linear-gradient(145deg,#100a17,#08050b);
+
     border:1px solid var(--border);
-    background:rgba(13,9,18,.9);
+
     box-shadow:var(--shadow);
 }
+
 .form-grid{
     display:grid;
     grid-template-columns:1fr 1fr;
     gap:15px;
 }
+
 .form-group{
     margin-bottom:18px;
 }
-label{
+
+.form-group label{
     display:block;
-    color:var(--gray);
+    color:#bbb3c7;
     font-size:12px;
-    font-weight:600;
+    font-weight:800;
     margin-bottom:8px;
 }
-input,textarea,select{
+
+input,
+textarea,
+select{
     width:100%;
+
     padding:15px;
+
     border-radius:10px;
-    border:1px solid rgba(255,255,255,.09);
-    background:#070509;
+
+    background:#05030a;
+
     color:white;
+
+    border:1px solid rgba(255,255,255,.09);
+
     outline:none;
+
+    transition:.25s;
 }
-input:focus,textarea:focus,select:focus{
+
+input:focus,
+textarea:focus,
+select:focus{
     border-color:var(--purple2);
-    box-shadow:0 0 0 3px rgba(155,92,255,.08);
+    box-shadow:0 0 0 3px rgba(168,85,247,.08);
 }
+
 textarea{
-    min-height:125px;
+    min-height:130px;
     resize:vertical;
 }
-.required{
-    color:#d9c7ed;
-    font-size:10px;
-    margin-top:5px;
-}
-.optional{
-    color:#777080;
-    font-size:10px;
-    margin-top:5px;
-}
-.form-note{
-    color:#777080;
+
+.privacy-note{
+    color:#71697b;
     font-size:11px;
     line-height:1.6;
-    margin:8px 0 20px;
+    margin:10px 0 20px;
 }
-.success{
+
+.form-message{
     display:none;
     margin-top:15px;
     padding:14px;
     border-radius:10px;
-    background:rgba(155,92,255,.08);
-    border:1px solid rgba(192,132,255,.2);
+
+    background:rgba(168,85,247,.08);
+    border:1px solid rgba(192,132,252,.2);
+
     color:var(--purple2);
+
     font-size:13px;
+    font-weight:700;
 }
-/* ---------------- SUPPORT ---------------- */
-.support{
-    padding-top:70px;
+
+
+/* =====================================================
+   SUPPORT
+   ===================================================== */
+
+.support-section{
+    padding-top:65px;
+    padding-bottom:110px;
 }
+
 .support-box{
     position:relative;
     overflow:hidden;
+
+    padding:75px 30px;
+
     text-align:center;
-    padding:75px 25px;
+
     border-radius:28px;
-    border:1px solid rgba(192,132,255,.25);
+
     background:
-        radial-gradient(circle,rgba(155,92,255,.13),transparent 55%),
-        #0b0810;
+        radial-gradient(circle at center,rgba(168,85,247,.13),transparent 55%),
+        #0a0610;
+
+    border:1px solid rgba(192,132,252,.25);
 }
+
+.support-box::before{
+    content:"";
+    position:absolute;
+
+    width:450px;
+    height:450px;
+
+    left:50%;
+    top:50%;
+
+    transform:translate(-50%,-50%);
+
+    border-radius:50%;
+
+    border:1px dashed rgba(192,132,252,.13);
+
+    animation:circleRotate 30s linear infinite;
+}
+
+.support-content{
+    position:relative;
+    z-index:2;
+}
+
 .support-box p{
-    color:var(--gray);
-    max-width:600px;
+    max-width:620px;
     margin:0 auto 30px;
+
+    color:var(--gray);
     line-height:1.8;
+    font-weight:600;
 }
-.socials{
+
+.social-buttons{
     display:flex;
     justify-content:center;
-    flex-wrap:wrap;
     gap:12px;
+    flex-wrap:wrap;
 }
-.social{
+
+.social-button{
     padding:13px 18px;
+
     border:1px solid rgba(255,255,255,.1);
     border-radius:10px;
+
     font-size:13px;
     font-weight:800;
+
     transition:.3s;
 }
-.social:hover{
+
+.social-button:hover{
     color:var(--purple2);
     border-color:var(--purple2);
     transform:translateY(-3px);
 }
-/* ---------------- FOOTER ---------------- */
+
+
+/* =====================================================
+   FOOTER
+   ===================================================== */
+
 footer{
-    padding:40px 7%;
     border-top:1px solid rgba(255,255,255,.06);
-    background:#030205;
+    background:#030207;
+    padding:40px 8%;
 }
-.footer{
-    max-width:1250px;
+
+.footer-content{
+    max-width:1300px;
     margin:auto;
+
     display:flex;
     justify-content:space-between;
     align-items:center;
-    gap:20px;
+
+    gap:25px;
 }
-.footer-name{
-    font-family:"Orbitron";
+
+.footer-brand{
+    font-family:"Orbitron",sans-serif;
     font-size:14px;
     font-weight:900;
     letter-spacing:2px;
 }
-.footer-name span{
+
+.footer-brand span{
     color:var(--purple2);
 }
-.footer-text{
-    color:#696370;
+
+.copyright{
+    color:#6f6878;
     font-size:11px;
+    font-weight:700;
 }
-/* ---------------- TOP BUTTON ---------------- */
-#top{
+
+
+/* =====================================================
+   BACK TO TOP
+   ===================================================== */
+
+#backToTop{
     position:fixed;
+
     right:20px;
     bottom:20px;
+
     width:48px;
     height:48px;
+
     border-radius:50%;
+
+    background:#0d0814;
+
     border:1px solid var(--border);
-    background:#0d0911;
+
     color:var(--purple2);
+
     display:none;
     align-items:center;
     justify-content:center;
+
     cursor:pointer;
-    z-index:900;
+
+    z-index:1500;
+
+    font-size:18px;
 }
-/* ---------------- REVEAL ---------------- */
+
+
+/* =====================================================
+   REVEAL ANIMATION
+   ===================================================== */
+
 .reveal{
     opacity:0;
     transform:translateY(35px);
-    transition:opacity .9s ease,transform .9s ease;
+    transition:
+        opacity .8s ease,
+        transform .8s ease;
 }
-.reveal.show{
+
+.reveal.visible{
     opacity:1;
     transform:translateY(0);
 }
-/* ---------------- MOBILE ---------------- */
-@media(max-width:950px){
-    .nav-links{
-        position:absolute;
-        top:82px;
-        left:0;
-        right:0;
-        padding:18px;
-        background:rgba(7,5,10,.96);
-        border:1px solid var(--border);
-        border-radius:16px;
-        display:none;
-        flex-direction:column;
-        align-items:stretch;
-    }
-    .nav-links.open{
-        display:flex;
-    }
-    .nav-links a{
-        display:block;
-        padding:14px;
-        text-align:center;
-    }
-    .menu-btn{
-        display:block;
-    }
+
+
+/* =====================================================
+   RESPONSIVE
+   ===================================================== */
+
+@media(max-width:1000px){
+
     .about-grid,
-    .booking-grid{
+    .booking-layout{
+        grid-template-columns:1fr;
+        gap:40px;
+    }
+
+    .booking-info{
+        position:static;
+    }
+
+    .journey-box{
         grid-template-columns:1fr;
     }
-    .leader-grid{
+
+    .video-grid{
         grid-template-columns:1fr;
     }
-    .journey-grid{
-        grid-template-columns:1fr 1fr;
-    }
+
     .gallery-grid{
         grid-template-columns:1fr 1fr;
     }
+
     .stats-grid{
         grid-template-columns:1fr 1fr;
     }
 }
-@media(max-width:600px){
+
+@media(max-width:760px){
+
     .navbar{
-        left:3%;
-        right:3%;
-        top:10px;
+        height:70px;
+        padding:0 5%;
     }
+
+    .nav-links{
+        display:none;
+    }
+
+    .mobile-menu-button{
+        display:block;
+    }
+
     section{
-        padding:85px 6%;
+        padding:80px 6%;
     }
+
     .hero{
-        padding-top:130px;
+        padding-top:120px;
     }
+
     .hero-logo{
-        width:135px;
-        height:135px;
+        width:125px;
+        height:125px;
+        border-radius:28px;
     }
+
     .hero h1{
-        font-size:47px;
-    }
-    .motto{
         letter-spacing:3px;
     }
-    .hero-description{
-        font-size:14px;
-    }
-    .hero-buttons{
-        flex-direction:column;
-    }
-    .btn{
-        width:100%;
-    }
-    .stats-grid,
-    .journey-grid,
-    .gallery-grid,
-    .form-grid{
-        grid-template-columns:1fr;
-    }
-    .gallery-item.large{
-        grid-column:span 1;
-        grid-row:span 1;
-    }
-    .leader-card{
-        flex-direction:column;
-        text-align:center;
-    }
-    .scorer{
+
+    .section-header{
         flex-direction:column;
         align-items:flex-start;
     }
-    .form{
-        padding:22px;
+
+    .form-grid{
+        grid-template-columns:1fr;
     }
-    .footer{
+
+    .booking-form{
+        padding:23px;
+    }
+
+    .gallery-grid{
+        grid-template-columns:1fr 1fr;
+        grid-auto-rows:160px;
+    }
+
+    .gallery-item.large{
+        grid-column:span 2;
+        grid-row:span 1;
+    }
+
+    .footer-content{
         flex-direction:column;
         text-align:center;
     }
-    .fire.left,
-    .fire.right{
-        width:35px;
+}
+
+@media(max-width:450px){
+
+    .stats-grid{
+        grid-template-columns:1fr;
+    }
+
+    .gallery-grid{
+        grid-template-columns:1fr;
+    }
+
+    .gallery-item.large{
+        grid-column:span 1;
+    }
+
+    .hero-buttons{
+        flex-direction:column;
+        align-items:stretch;
+    }
+
+    .button{
+        width:100%;
+    }
+
+    .energy-left,
+    .energy-right{
+        width:55px;
     }
 }
+
 </style>
 </head>
+
+
 <body>
-<div class="grid"></div>
-<div class="noise"></div>
-<div class="orb one"></div>
-<div class="orb two"></div>
-<!-- ANIMATED PURPLE ENERGY -->
-<div class="fire left">
-    <div class="flame" style="top:12%;animation-delay:.1s"></div>
-    <div class="flame" style="top:38%;animation-delay:.5s"></div>
-    <div class="flame" style="top:66%;animation-delay:.2s"></div>
-    <div class="flame" style="top:84%;animation-delay:.7s"></div>
-</div>
-<div class="fire right">
-    <div class="flame" style="top:8%;animation-delay:.4s"></div>
-    <div class="flame" style="top:31%;animation-delay:.1s"></div>
-    <div class="flame" style="top:58%;animation-delay:.6s"></div>
-    <div class="flame" style="top:80%;animation-delay:.3s"></div>
-</div>
-<div class="fire top">
-    <div class="flame" style="left:15%;animation-delay:.3s"></div>
-    <div class="flame" style="left:48%;animation-delay:.7s"></div>
-    <div class="flame" style="left:78%;animation-delay:.2s"></div>
-</div>
-<div class="fire bottom">
-    <div class="flame" style="left:20%;animation-delay:.5s"></div>
-    <div class="flame" style="left:52%;animation-delay:.1s"></div>
-    <div class="flame" style="left:82%;animation-delay:.6s"></div>
-</div>
-<!-- LOADER -->
+
+<!-- =====================================================
+     BACKGROUND
+     ===================================================== -->
+
+<div class="background-grid"></div>
+
+<div class="glow glow-one"></div>
+<div class="glow glow-two"></div>
+
+
+<!-- =====================================================
+     SCROLL ENERGY
+     ===================================================== -->
+
+<div class="energy energy-left"></div>
+<div class="energy energy-right"></div>
+<div class="energy energy-top"></div>
+<div class="energy energy-bottom"></div>
+
+
+<!-- =====================================================
+     LOADER
+     ===================================================== -->
+
 <div id="loader">
-    <div class="loader-box">
-        <div class="loader-ring"></div>
-        <div class="loader-name">VALORIC FC</div>
+
+    <div class="loader-content">
+
+        <div class="loader-logo"></div>
+
+        <div class="loader-text">
+            VALORIC FC
+        </div>
+
     </div>
+
 </div>
-<!-- NAVIGATION -->
+
+
+<!-- =====================================================
+     NAVIGATION
+     ===================================================== -->
+
 <nav class="navbar">
-    <a href="#home" class="brand">
-        <img src="Background Eraser.png" alt="VALORIC FC Logo">
-        <div class="brand-name">
+
+    <a href="#home" class="nav-brand">
+
+        <div class="mini-logo">
+            <img
+                src="Background Eraser.png"
+                alt="VALORIC FC Logo"
+            >
+        </div>
+
+        <div class="brand-text">
             VALORIC <span>FC</span>
         </div>
+
     </a>
-    <ul class="nav-links" id="navLinks">
+
+
+    <ul class="nav-links">
+
         <li><a href="#about">CLUB</a></li>
+
         <li><a href="#players">PLAYERS</a></li>
+
         <li><a href="#journey">JOURNEY</a></li>
-        <li><a href="#gallery">HIGHLIGHTS</a></li>
-        <li><a href="#book" class="nav-cta">BOOK A MATCH</a></li>
+
+        <li><a href="#highlights">HIGHLIGHTS</a></li>
+
+        <li><a href="#gallery">GALLERY</a></li>
+
+        <li>
+            <a href="#book" class="nav-button">
+                BOOK A MATCH
+            </a>
+        </li>
+
     </ul>
-    <button class="menu-btn" onclick="toggleMenu()">☰</button>
+
+
+    <button
+        class="mobile-menu-button"
+        id="menuButton"
+        onclick="toggleMenu()"
+        aria-label="Open menu"
+    >
+        ☰
+    </button>
+
 </nav>
-<!-- HERO -->
+
+
+<!-- =====================================================
+     MOBILE MENU
+     ===================================================== -->
+
+<div class="mobile-menu" id="mobileMenu">
+
+    <a href="#home" onclick="closeMenu()">HOME</a>
+
+    <a href="#about" onclick="closeMenu()">CLUB</a>
+
+    <a href="#players" onclick="closeMenu()">PLAYERS</a>
+
+    <a href="#journey" onclick="closeMenu()">JOURNEY</a>
+
+    <a href="#highlights" onclick="closeMenu()">HIGHLIGHTS</a>
+
+    <a href="#gallery" onclick="closeMenu()">GALLERY</a>
+
+    <a href="#book" onclick="closeMenu()">BOOK A MATCH</a>
+
+    <a href="#support" onclick="closeMenu()">SUPPORTERS</a>
+
+</div>
+
+
+<!-- =====================================================
+     HERO
+     ===================================================== -->
+
 <section class="hero" id="home">
-    <div class="circle circle.one"></div>
-    <div class="circle circle.two"></div>
-    <div class="circle circle.three"></div>
+
+    <div class="circle-design circle-one"></div>
+    <div class="circle-design circle-two"></div>
+    <div class="circle-design circle-three"></div>
+
+
     <div class="hero-content reveal">
-        <div class="badge">
-            <span class="dot"></span>
+
+        <div class="hero-badge">
+
+            <span class="status-dot"></span>
+
             ESTABLISHED 2026
+
         </div>
-        <img
-            class="hero-logo"
-            src="Background Eraser.png"
-            alt="VALORIC FC"
-        >
+
+
+        <div class="hero-logo">
+
+            <img
+                src="Background Eraser.png"
+                alt="VALORIC FC Logo"
+            >
+
+        </div>
+
+
         <h1>
             VALORIC <span>FC</span>
         </h1>
-        <div class="motto">
+
+
+        <p class="hero-motto">
             POWERED BY VALOR
-        </div>
-        <p class="hero-description">
-            A football community built on passion,
-            courage, teamwork and ambition.
-            One badge. One identity. One journey.
         </p>
+
+
+        <p class="hero-description">
+
+            More than a football club.
+            A community built on passion,
+            courage, teamwork and ambition.
+
+        </p>
+
+
         <div class="hero-buttons">
-            <a href="#book" class="btn btn-primary">
+
+            <a
+                href="#book"
+                class="button button-primary"
+            >
                 ⚡ BOOK A MATCH
             </a>
-            <a href="#players" class="btn btn-secondary">
-                MEET THE SQUAD →
+
+            <a
+                href="#players"
+                class="button button-secondary"
+            >
+                MEET THE TEAM →
             </a>
+
         </div>
+
     </div>
-    <div class="scroll">
+
+
+    <div class="hero-scroll">
+
         SCROLL TO EXPLORE
+
         <div class="scroll-line"></div>
+
     </div>
+
 </section>
-<!-- ABOUT -->
-<section class="about" id="about">
-    <div class="container about-grid">
-        <div class="reveal">
-            <div class="tag">01 / THE CLUB</div>
-            <h2 class="title">
-                BUILT ON <span>VALOR</span>
-            </h2>
-            <div class="about-text">
-                <p>
-                    VALORIC FC is a football community
-                    united by passion, teamwork and
-                    determination.
-                </p>
-                <p>
-                    Founded in 2026, the club is based in
-                    <strong>HALISHAHAR, CHATTOGRAM.</strong>
-                </p>
-                <p>
-                    Our identity is simple:
-                    <strong>POWERED BY VALOR.</strong>
-                </p>
-                <p>
-                    Every match is another opportunity
-                    to compete, improve and build history.
-                </p>
-            </div>
-        </div>
-        <div class="about-card reveal">
-            <div class="circle circle.two"></div>
-            <img src="Background Eraser.png" alt="VALORIC FC Logo">
-        </div>
-    </div>
-</section>
-<!-- STATS -->
-<section class="stats">
-    <div class="container stats-grid">
-        <div class="stat reveal">
-            <div class="stat-number">40+</div>
-            <div class="stat-label">PLAYERS</div>
-        </div>
-        <div class="stat reveal">
-            <div class="stat-number">2026</div>
-            <div class="stat-label">ESTABLISHED</div>
-        </div>
-        <div class="stat reveal">
-            <div class="stat-number">01</div>
-            <div class="stat-label">CLUB IDENTITY</div>
-        </div>
-        <div class="stat reveal">
-            <div class="stat-number">∞</div>
-            <div class="stat-label">AMBITION</div>
-        </div>
-    </div>
-</section>
-<!-- LEADERSHIP -->
-<section class="leaders">
+
+
+<!-- =====================================================
+     ABOUT
+     ===================================================== -->
+
+<section class="about-section" id="about">
+
     <div class="container">
-        <div class="tag">02 / LEADERSHIP</div>
-        <h2 class="title">
-            THE <span>LEADERS</span>
-        </h2>
-        <p class="description">
-            The people leading Valoric FC forward.
-        </p>
-        <div class="leader-grid">
-            <div class="leader-card reveal">
-                <img
-                    src="e68d76f2-7ef2-4722-9f04-6b59de5e26b3.jpeg"
-                    alt="TAHSIN"
-                >
-                <div>
-                    <div class="leader-role">
-                        FOUNDER • CAPTAIN
-                    </div>
-                    <div class="leader-name">
+
+        <div class="about-grid">
+
+            <div class="reveal">
+
+                <div class="section-tag">
+                    01 / THE CLUB
+                </div>
+
+                <h2 class="section-title">
+                    BUILT ON <span>PASSION</span>
+                </h2>
+
+                <div class="about-text">
+
+                    <p>
+                        VALORIC FC is a football
+                        community united by passion,
+                        teamwork and determination.
+                    </p>
+
+                    <p>
+                        Founded in 2026, the club
+                        represents a new generation
+                        of football driven by ambition
+                        and courage.
+                    </p>
+
+                    <p>
+                        Our identity is simple:
+                        <strong>POWERED BY VALOR.</strong>
+                    </p>
+
+                    <p>
+                        <strong>FOUNDER:</strong>
                         TAHSIN #10
-                    </div>
-                    <p class="description" style="margin-top:8px;font-size:12px">
-                        Founder of VALORIC FC and captain of the squad.
                     </p>
-                </div>
-            </div>
-            <div class="leader-card reveal">
-                <div class="scorer-icon">
-                    #30
-                </div>
-                <div>
-                    <div class="leader-role">
-                        VICE CAPTAIN
-                    </div>
-                    <div class="leader-name">
+
+                    <p>
+                        <strong>CAPTAIN:</strong>
+                        TAHSIN #10
+                    </p>
+
+                    <p>
+                        <strong>VICE CAPTAIN:</strong>
                         ABRAR #30
-                    </div>
-                    <p class="description" style="margin-top:8px;font-size:12px">
-                        Vice captain and midfield/forward player.
                     </p>
+
+                    <p>
+                        <strong>MANAGERS:</strong>
+                        TAHSIN / ABRAR
+                    </p>
+
+                    <p>
+                        <strong>LOCATION:</strong>
+                        HALISHAHAR, CHATTOGRAM
+                    </p>
+
                 </div>
+
             </div>
+
+
+            <div class="about-visual reveal">
+
+                <img
+                    src="Background Eraser.png"
+                    alt="VALORIC FC"
+                >
+
+            </div>
+
         </div>
+
     </div>
+
 </section>
-<!-- PLAYERS -->
-<section class="players" id="players">
+
+
+<!-- =====================================================
+     STATS
+     ===================================================== -->
+
+<section class="stats-section">
+
     <div class="container">
-        <div class="section-head">
+
+        <div class="stats-grid">
+
+            <div class="stat-card reveal">
+
+                <div class="stat-number">
+                    40+
+                </div>
+
+                <div class="stat-label">
+                    PLAYERS
+                </div>
+
+            </div>
+
+
+            <div class="stat-card reveal">
+
+                <div class="stat-number">
+                    2026
+                </div>
+
+                <div class="stat-label">
+                    ESTABLISHED
+                </div>
+
+            </div>
+
+
+            <div class="stat-card reveal">
+
+                <div class="stat-number">
+                    01
+                </div>
+
+                <div class="stat-label">
+                    CLUB. ONE IDENTITY.
+                </div>
+
+            </div>
+
+
+            <div class="stat-card reveal">
+
+                <div class="stat-number">
+                    ∞
+                </div>
+
+                <div class="stat-label">
+                    AMBITION
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     PLAYERS
+     ===================================================== -->
+
+<section class="players-section" id="players">
+
+    <div class="container">
+
+        <div class="section-header reveal">
+
             <div>
-                <div class="tag">03 / THE SQUAD</div>
-                <h2 class="title">
+
+                <div class="section-tag">
+                    02 / THE SQUAD
+                </div>
+
+                <h2 class="section-title">
                     MEET THE <span>PLAYERS</span>
                 </h2>
-                <p class="description">
-                    The players who wear the Valoric FC badge.
+
+                <p class="section-description">
+                    The players who wear the
+                    Valoric FC badge.
                 </p>
+
             </div>
+
+            <a
+                href="#support"
+                class="button button-secondary"
+            >
+                JOIN OUR JOURNEY
+            </a>
+
         </div>
+
+
         <div class="players-grid">
-            <!-- TAHSIN FIRST -->
-            <div class="player reveal">
-                <div class="player-photo captain">
-                    <div class="player-number">10</div>
+
+
+            <!-- TAHSIN -->
+
+            <div class="player-card reveal">
+
+                <div class="player-photo">
+
+                    <div class="player-number">
+                        10
+                    </div>
+
                     <img
-                        src="e68d76f2-7ef2-4722-9f04-6b59de5e26b3.jpeg"
+                        src="45561E75-6134-46E2-A4BB-584A9DEF1CAF.jpeg"
                         alt="TAHSIN #10"
                     >
+
                 </div>
+
                 <div class="player-info">
-                    <div class="player-name">TAHSIN</div>
-                    <div class="player-position">
-                        #10 • CAPTAIN • FORWARD
-                    </div>
+
+                    <h3 class="player-name">
+                        TAHSIN
+                    </h3>
+
+                    <p class="player-position">
+                        FORWARD
+                    </p>
+
+                    <span class="captain-badge">
+                        CAPTAIN • FOUNDER
+                    </span>
+
                 </div>
+
             </div>
-            <!-- ABRAR SECOND -->
-            <div class="player reveal">
+
+
+            <!-- ABRAR -->
+
+            <div class="player-card reveal">
+
                 <div class="player-photo">
-                    <div class="player-number">30</div>
-                    <div style="font-size:65px">⚽</div>
-                </div>
-                <div class="player-info">
-                    <div class="player-name">ABRAR</div>
-                    <div class="player-position">
-                        #30 • VICE CAPTAIN • MIDFIELD / FORWARD
+
+                    <div class="player-number">
+                        30
                     </div>
+
+                    <div class="play-button"
+                         style="width:100px;height:100px;font-size:40px;">
+                        30
+                    </div>
+
                 </div>
+
+                <div class="player-info">
+
+                    <h3 class="player-name">
+                        ABRAR
+                    </h3>
+
+                    <p class="player-position">
+                        MIDFIELD / FORWARD
+                    </p>
+
+                    <span class="captain-badge">
+                        VICE CAPTAIN
+                    </span>
+
+                </div>
+
             </div>
-            <div class="player reveal">
-                <div class="player-photo"><div class="player-number">1</div><div style="font-size:65px">🧤</div></div>
-                <div class="player-info"><div class="player-name">ADRIYAN</div><div class="player-position">#1 • GK</div></div>
+
+
+            <!-- ELHAM -->
+
+            <div class="player-card reveal">
+
+                <div class="player-photo">
+
+                    <div class="player-number">
+                        07
+                    </div>
+
+                    <img
+                        src="efa8cd6a-b443-4287-a575-e9c43d91fd41.jpeg"
+                        alt="ELHAM #7"
+                    >
+
+                </div>
+
+                <div class="player-info">
+
+                    <h3 class="player-name">
+                        ELHAM
+                    </h3>
+
+                    <p class="player-position">
+                        FORWARD
+                    </p>
+
+                </div>
+
             </div>
-            <div class="player reveal">
-                <div class="player-photo"><div class="player-number">2</div><div style="font-size:65px">⚽</div></div>
-                <div class="player-info"><div class="player-name">ADIF</div><div class="player-position">#2 • DEFENSE</div></div>
+
+
+            <!-- IFAT -->
+
+            <div class="player-card reveal">
+
+                <div class="player-photo">
+
+                    <div class="player-number">
+                        04
+                    </div>
+
+                    <img
+                        src="684D10C1-3090-4D7F-9085-02A52AC74EC6.jpeg"
+                        alt="IFAT #4"
+                    >
+
+                </div>
+
+                <div class="player-info">
+
+                    <h3 class="player-name">
+                        IFAT
+                    </h3>
+
+                    <p class="player-position">
+                        DEFENSE
+                    </p>
+
+                </div>
+
             </div>
-            <div class="player reveal">
-                <div class="player-photo"><div class="player-number">3</div><div style="font-size:65px">⚽</div></div>
-                <div class="player-info"><div class="player-name">SIJAN</div><div class="player-position">#3 • DEFENSE</div></div>
+
+
+            <!-- ASHRAFI -->
+
+            <div class="player-card reveal">
+
+                <div class="player-photo">
+
+                    <div class="player-number">
+                        17
+                    </div>
+
+                    <img
+                        src="DB50BEAB-13EE-4122-9A20-D09E8CB98E88.jpeg"
+                        alt="ASHRAFI #17"
+                    >
+
+                </div>
+
+                <div class="player-info">
+
+                    <h3 class="player-name">
+                        ASHRAFI
+                    </h3>
+
+                    <p class="player-position">
+                        MIDFIELD
+                    </p>
+
+                </div>
+
             </div>
-            <div class="player reveal">
-                <div class="player-photo"><div class="player-number">4</div><div style="font-size:65px">⚽</div></div>
-                <div class="player-info"><div class="player-name">IFAT</div><div class="player-position">#4 • DEFENSE</div></div>
+
+
+            <!-- ADIF -->
+
+            <div class="player-card reveal">
+
+                <div class="player-photo">
+
+                    <div class="player-number">
+                        02
+                    </div>
+
+                    <img
+                        src="DC2928BA-FB92-4ED1-89A4-E270DF090524.jpeg"
+                        alt="ADIF #2"
+                    >
+
+                </div>
+
+                <div class="player-info">
+
+                    <h3 class="player-name">
+                        ADIF
+                    </h3>
+
+                    <p class="player-position">
+                        DEFENSE
+                    </p>
+
+                </div>
+
             </div>
-            <div class="player reveal">
-                <div class="player-photo"><div class="player-number">5</div><div style="font-size:65px">⚽</div></div>
-                <div class="player-info"><div class="player-name">SAIF</div><div class="player-position">#5 • MIDFIELD</div></div>
+
+
+            <!-- ZAWAD -->
+
+            <div class="player-card reveal">
+
+                <div class="player-photo">
+
+                    <div class="player-number">
+                        21
+                    </div>
+
+                    <img
+                        src="489C1476-70F2-40AE-831F-4D396F0805C8.jpeg"
+                        alt="ZAWAD #21"
+                    >
+
+                </div>
+
+                <div class="player-info">
+
+                    <h3 class="player-name">
+                        ZAWAD
+                    </h3>
+
+                    <p class="player-position">
+                        DEFENSE
+                    </p>
+
+                </div>
+
             </div>
-            <div class="player reveal">
-                <div class="player-photo"><div class="player-number">6</div><div style="font-size:65px">⚽</div></div>
-                <div class="player-info"><div class="player-name">SAKIB</div><div class="player-position">#6 • DEFENSE</div></div>
-            </div>
-            <div class="player reveal">
-                <div class="player-photo"><div class="player-number">6</div><div style="font-size:65px">⚽</div></div>
-                <div class="player-info"><div class="player-name">NAZIL</div><div class="player-position">#6 • DEFENSE</div></div>
-            </div>
-            <div class="player reveal">
-                <div class="player-photo"><div class="player-number">7</div><div style="font-size:65px">⚽</div></div>
-                <div class="player-info"><div class="player-name">ELHAM</div><div class="player-position">#7 • FORWARD</div></div>
-            </div>
-            <div class="player reveal">
-                <div class="player-photo"><div class="player-number">8</div><div style="font-size:65px">⚽</div></div>
-                <div class="player-info"><div class="player-name">ROHIT</div><div class="player-position">#8 • MIDFIELD</div></div>
-            </div>
-            <div class="player reveal">
-                <div class="player-photo"><div class="player-number">9</div><div style="font-size:65px">⚽</div></div>
-                <div class="player-info"><div class="player-name">ZARIF</div><div class="player-position">#9 • MIDFIELD</div></div>
-            </div>
-            <div class="player reveal">
-                <div class="player-photo"><div class="player-number">11</div><div style="font-size:65px">⚽</div></div>
-                <div class="player-info"><div class="player-name">AIMAN JR</div><div class="player-position">#11 • FORWARD</div></div>
-            </div>
-            <div class="player reveal">
-                <div class="player-photo"><div class="player-number">12</div><div style="font-size:65px">⚽</div></div>
-                <div class="player-info"><div class="player-name">SADIKIN</div><div class="player-position">#12 • FORWARD</div></div>
-            </div>
-            <div class="player reveal">
-                <div class="player-photo"><div class="player-number">14</div><div style="font-size:65px">⚽</div></div>
-                <div class="player-info"><div class="player-name">IRFANN</div><div class="player-position">#14 • FORWARD</div></div>
-            </div>
-            <div class="player reveal">
-                <div class="player-photo"><div class="player-number">15</div><div style="font-size:65px">⚽</div></div>
-                <div class="player-info"><div class="player-name">SHIHAB</div><div class="player-position">#15 • MIDFIELD</div></div>
-            </div>
-            <div class="player reveal">
-                <div class="player-photo"><div class="player-number">15</div><div style="font-size:65px">⚽</div></div>
-                <div class="player-info"><div class="player-name">NAYEM</div><div class="player-position">#15 • MIDFIELD</div></div>
-            </div>
-            <div class="player reveal">
-                <div class="player-photo"><div class="player-number">16</div><div style="font-size:65px">⚽</div></div>
-                <div class="player-info"><div class="player-name">SEFAT</div><div class="player-position">#16 • MIDFIELD</div></div>
-            </div>
-            <div class="player reveal">
-                <div class="player-photo"><div class="player-number">17</div><div style="font-size:65px">⚽</div></div>
-                <div class="player-info"><div class="player-name">ASHRAFI</div><div class="player-position">#17 • MIDFIELD</div></div>
-            </div>
-            <div class="player reveal">
-                <div class="player-photo"><div class="player-number">19</div><div style="font-size:65px">⚽</div></div>
-                <div class="player-info"><div class="player-name">LABIB</div><div class="player-position">#19 • DEFENSE</div></div>
-            </div>
-            <div class="player reveal">
-                <div class="player-photo"><div class="player-number">21</div><div style="font-size:65px">⚽</div></div>
-                <div class="player-info"><div class="player-name">ZAWAD</div><div class="player-position">#21 • DEFENSE</div></div>
-            </div>
-            <div class="player reveal">
-                <div class="player-photo"><div class="player-number">22</div><div style="font-size:65px">⚽</div></div>
-                <div class="player-info"><div class="player-name">FARSATH</div><div class="player-position">#22 • MIDFIELD</div></div>
-            </div>
-            <div class="player reveal">
-                <div class="player-photo"><div class="player-number">23</div><div style="font-size:65px">🧤</div></div>
-                <div class="player-info"><div class="player-name">MAHMUD</div><div class="player-position">#23 • GK</div></div>
-            </div>
-            <div class="player reveal">
-                <div class="player-photo"><div class="player-number">24</div><div style="font-size:65px">⚽</div></div>
-                <div class="player-info"><div class="player-name">SAMI</div><div class="player-position">#24 • DEFENSE / GK</div></div>
-            </div>
-            <div class="player reveal">
-                <div class="player-photo"><div class="player-number">25</div><div style="font-size:65px">⚽</div></div>
-                <div class="player-info"><div class="player-name">SEYAMZZ</div><div class="player-position">#25 • MIDFIELD / FORWARD</div></div>
-            </div>
-            <div class="player reveal">
-                <div class="player-photo"><div class="player-number">26</div><div style="font-size:65px">⚽</div></div>
-                <div class="player-info"><div class="player-name">SHORIF</div><div class="player-position">#26 • DEFENSE</div></div>
-            </div>
-            <div class="player reveal">
-                <div class="player-photo"><div class="player-number">28</div><div style="font-size:65px">⚽</div></div>
-                <div class="player-info"><div class="player-name">ANIF</div><div class="player-position">#28 • DEFENSE</div></div>
-            </div>
-            <div class="player reveal">
-                <div class="player-photo"><div class="player-number">28</div><div style="font-size:65px">⚽</div></div>
-                <div class="player-info"><div class="player-name">FARDIN</div><div class="player-position">#28 • MIDFIELD</div></div>
-            </div>
-            <div class="player reveal">
-                <div class="player-photo"><div class="player-number">31</div><div style="font-size:65px">⚽</div></div>
-                <div class="player-info"><div class="player-name">MAHMUD.AZ</div><div class="player-position">#31 • UNIDENTIFIED</div></div>
-            </div>
-            <div class="player reveal">
-                <div class="player-photo"><div class="player-number">32</div><div style="font-size:65px">⚽</div></div>
-                <div class="player-info"><div class="player-name">ZARIF</div><div class="player-position">#32 • UNIDENTIFIED</div></div>
-            </div>
-            <div class="player reveal">
-                <div class="player-photo"><div class="player-number">34</div><div style="font-size:65px">⚽</div></div>
-                <div class="player-info"><div class="player-name">NOBOBI</div><div class="player-position">#34 • UNIDENTIFIED</div></div>
-            </div>
-            <div class="player reveal">
-                <div class="player-photo"><div class="player-number">67</div><div style="font-size:65px">⚽</div></div>
-                <div class="player-info"><div class="player-name">ABRAR</div><div class="player-position">#67 • MIDFIELD</div></div>
-            </div>
-            <div class="player reveal">
-                <div class="player-photo"><div class="player-number">80</div><div style="font-size:65px">⚽</div></div>
-                <div class="player-info"><div class="player-name">A.ALIF</div><div class="player-position">#80 • DEFENSE</div></div>
-            </div>
-            <div class="player reveal">
-                <div class="player-photo"><div class="player-number">999</div><div style="font-size:65px">⚽</div></div>
-                <div class="player-info"><div class="player-name">TAMIM</div><div class="player-position">#999 • FORWARD</div></div>
-            </div>
+
+
         </div>
-        <!-- TOP SCORER -->
-        <div class="scorer reveal">
-            <div class="scorer-left">
-                <div class="scorer-icon">
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     JOURNEY
+     ===================================================== -->
+
+<section class="journey-section" id="journey">
+
+    <div class="container">
+
+        <div class="section-tag reveal">
+            03 / OUR JOURNEY
+        </div>
+
+        <h2 class="section-title reveal">
+            EVERY MATCH.
+            <br>
+            MORE <span>HISTORY.</span>
+        </h2>
+
+        <p class="section-description reveal">
+            The journey has only begun.
+            Every match creates another chapter.
+        </p>
+
+
+        <div class="journey-box">
+
+
+            <div class="journey-card reveal">
+
+                <div class="journey-icon">
                     🏆
                 </div>
-                <div>
-                    <div class="scorer-title">
-                        TOP SCORER
-                    </div>
-                    <div class="scorer-name">
-                        TAHSIN #10 • CAPTAIN
-                    </div>
+
+                <h3>
+                    MATCH HISTORY
+                </h3>
+
+                <p>
+                    This section is ready for
+                    Valoric FC victories,
+                    tournaments and memorable
+                    matches to be added.
+                </p>
+
+            </div>
+
+
+            <div class="journey-card reveal">
+
+                <div class="journey-icon">
+                    ⚽
                 </div>
+
+                <h3>
+                    TOP SCORER
+                </h3>
+
+                <p>
+                    The current featured top scorer
+                    of Valoric FC is
+                    <strong style="color:#c084fc;">
+                        TAHSIN #10
+                    </strong>.
+                </p>
+
             </div>
-            <div style="color:#8d8497;font-size:12px;font-weight:700">
-                VALORIC FC
+
+
+            <div class="journey-card reveal">
+
+                <div class="journey-icon">
+                    🚀
+                </div>
+
+                <h3>
+                    THE FUTURE
+                </h3>
+
+                <p>
+                    Bigger matches.
+                    Bigger challenges.
+                    Bigger ambitions.
+                </p>
+
             </div>
+
+
+            <div class="journey-card reveal">
+
+                <div class="journey-icon">
+                    🛡️
+                </div>
+
+                <h3>
+                    BUILT ON VALOR
+                </h3>
+
+                <p>
+                    Passion, teamwork,
+                    courage and ambition
+                    define the Valoric identity.
+                </p>
+
+            </div>
+
         </div>
+
     </div>
+
 </section>
-<!-- JOURNEY -->
-<section class="journey" id="journey">
+
+
+<!-- =====================================================
+     HIGHLIGHTS
+     ===================================================== -->
+
+<section class="highlights-section" id="highlights">
+
     <div class="container">
-        <div class="tag">04 / OUR JOURNEY</div>
-        <h2 class="title">
-            BUILT FOR <span>MORE</span>
-        </h2>
-        <p class="description">
-            The journey has just begun.
-        </p>
-        <div class="journey-grid">
-            <div class="journey-card reveal">
-                <div class="journey-icon">🏆</div>
-                <h3>MATCH HISTORY</h3>
-                <p>
-                    Every match becomes another chapter
-                    in the history of Valoric FC.
-                </p>
-            </div>
-            <div class="journey-card reveal">
-                <div class="journey-icon">⚽</div>
-                <h3>COMPETE</h3>
-                <p>
-                    Friendly matches, competitive games
-                    and tournament opportunities.
-                </p>
-            </div>
-            <div class="journey-card reveal">
-                <div class="journey-icon">🚀</div>
-                <h3>THE FUTURE</h3>
-                <p>
-                    Bigger challenges. Bigger ambition.
-                    Keep moving forward.
-                </p>
-            </div>
+
+        <div class="section-tag reveal">
+            04 / MATCH HIGHLIGHTS
         </div>
-    </div>
-</section>
-<!-- GALLERY / HIGHLIGHTS -->
-<section class="gallery" id="gallery">
-    <div class="container">
-        <div class="tag">05 / THE MOMENTS</div>
-        <h2 class="title">
-            VALORIC <span>HIGHLIGHTS</span>
+
+        <h2 class="section-title reveal">
+            WATCH THE <span>ACTION</span>
         </h2>
-        <p class="description">
-            Match days, training, victories and
-            everything that makes the club.
+
+        <p class="section-description reveal">
+            A dedicated space for Valoric FC
+            match highlights and football moments.
         </p>
+
+
+        <div class="video-grid">
+
+            <div class="video-card reveal">
+
+                <div class="play-button">
+                    ▶
+                </div>
+
+                <div class="video-label">
+                    FEATURED HIGHLIGHT
+                </div>
+
+            </div>
+
+
+            <div class="video-card reveal">
+
+                <div class="play-button">
+                    ▶
+                </div>
+
+                <div class="video-label">
+                    MORE HIGHLIGHTS
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     GALLERY
+     ===================================================== -->
+
+<section class="gallery-section" id="gallery">
+
+    <div class="container">
+
+        <div class="section-tag reveal">
+            05 / THE MOMENTS
+        </div>
+
+        <h2 class="section-title reveal">
+            VALORIC <span>GALLERY</span>
+        </h2>
+
+        <p class="section-description reveal">
+            Matches. Training. Teammates.
+            Victories. Every moment matters.
+        </p>
+
+
         <div class="gallery-grid">
+
+
             <div class="gallery-item large reveal">
-                <div>
+
+                <div class="gallery-placeholder">
+
                     <span>📸</span>
+
                     FEATURED TEAM PHOTO
+
                 </div>
+
             </div>
+
+
             <div class="gallery-item reveal">
-                <div>
+
+                <div class="gallery-placeholder">
+
                     <span>⚽</span>
+
                     MATCH DAY
+
                 </div>
+
             </div>
+
+
             <div class="gallery-item reveal">
-                <div>
+
+                <div class="gallery-placeholder">
+
                     <span>🏃</span>
+
                     TRAINING
+
                 </div>
+
             </div>
+
+
             <div class="gallery-item reveal">
-                <div>
+
+                <div class="gallery-placeholder">
+
                     <span>🏆</span>
-                    VICTORY
+
+                    ACHIEVEMENT
+
                 </div>
+
             </div>
+
+
             <div class="gallery-item reveal">
-                <div>
+
+                <div class="gallery-placeholder">
+
                     <span>💜</span>
+
                     THE COMMUNITY
+
                 </div>
+
             </div>
+
         </div>
-        <div class="video-box reveal">
-            <div>
-                <h3>🎬 VIDEO HIGHLIGHTS</h3>
-                <p>
-                    Your future match and training videos
-                    can be placed here.
-                </p>
-                <p style="margin-top:12px;color:#6f6877">
-                    VIDEO AREA READY
-                </p>
-            </div>
-        </div>
+
     </div>
+
 </section>
-<!-- BOOK A MATCH -->
-<section class="booking" id="book">
-    <div class="container booking-grid">
-        <div class="reveal">
-            <div class="tag">06 / CHALLENGE US</div>
-            <h2 class="title">
-                BOOK A <span>MATCH</span>
-            </h2>
-            <p class="description">
-                Think your team is ready?
-                Send Valoric FC your match request.
-            </p>
-            <ul class="points">
-                <li>
-                    <span class="check">✓</span>
-                    Quick match requests
-                </li>
-                <li>
-                    <span class="check">✓</span>
-                    Direct contact with the club
-                </li>
-                <li>
-                    <span class="check">✓</span>
-                    Friendly and competitive matches
-                </li>
-                <li>
-                    <span class="check">✓</span>
-                    Request delivered to our Gmail
-                </li>
-            </ul>
-        </div>
-        <!--
-            FORM SUBMISSION
-            Requests are sent to:
-            fcvaloric@gmail.com
-        -->
-        <form
-            class="form reveal"
-            id="matchForm"
-            action="https://formsubmit.co/fcvaloric@gmail.com"
-            method="POST"
-        >
-            <input type="hidden" name="_subject" value="⚡ New VALORIC FC Match Request">
-            <input type="hidden" name="_template" value="table">
-            <input type="hidden" name="_captcha" value="true">
-            <input
-                type="hidden"
-                name="_next"
-                value="https://example.com"
-            >
-            <div class="form-grid">
-                <div class="form-group">
-                    <label for="name">
-                        CONTACT PERSON *
-                    </label>
-                    <input
-                        id="name"
-                        name="Contact Person"
-                        type="text"
-                        placeholder="Your full name"
-                        required
-                    >
-                    <div class="required">
-                        REQUIRED
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="team">
-                        TEAM NAME *
-                    </label>
-                    <input
-                        id="team"
-                        name="Team Name"
-                        type="text"
-                        placeholder="Your team name"
-                        required
-                    >
-                    <div class="required">
-                        REQUIRED
-                    </div>
-                </div>
-            </div>
-            <div class="form-grid">
-                <div class="form-group">
-                    <label for="phone">
-                        PHONE NUMBER *
-                    </label>
-                    <input
-                        id="phone"
-                        name="Phone Number"
-                        type="tel"
-                        placeholder="+880..."
-                        required
-                    >
-                    <div class="required">
-                        REQUIRED
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="date">
-                        PREFERRED DATE *
-                    </label>
-                    <input
-                        id="date"
-                        name="Preferred Date"
-                        type="date"
-                        required
-                    >
-                    <div class="required">
-                        REQUIRED
-                    </div>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="matchType">
-                    MATCH TYPE
-                </label>
-                <select
-                    id="matchType"
-                    name="Match Type"
-                >
-                    <option>Friendly Match</option>
-                    <option>Competitive Match</option>
-                    <option>Tournament Invitation</option>
-                    <option>Other</option>
-                </select>
-                <div class="optional">
-                    OPTIONAL
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="details">
-                    LOCATION & DETAILS
-                </label>
-                <textarea
-                    id="details"
-                    name="Location & Details"
-                    placeholder="Location, preferred time and any other information..."
-                ></textarea>
-                <div class="optional">
-                    OPTIONAL
-                </div>
-            </div>
-            <p class="form-note">
-                Your contact information will be used to respond
-                to the match request.
-            </p>
-            <button
-                type="submit"
-                class="btn btn-primary"
-                style="width:100%"
-            >
-                ⚡ SEND MATCH REQUEST
-            </button>
-            <div class="success" id="success">
-                ✓ Your match request has been submitted.
-            </div>
-        </form>
-    </div>
-</section>
-<!-- SUPPORT -->
-<section class="support" id="support">
+
+
+<!-- =====================================================
+     BOOK A MATCH
+     ===================================================== -->
+
+<section class="booking-section" id="book">
+
     <div class="container">
-        <div class="support-box reveal">
-            <div class="tag">
-                VALORIC FAMILY
+
+        <div class="booking-layout">
+
+
+            <div class="booking-info reveal">
+
+                <div class="section-tag">
+                    06 / CHALLENGE US
+                </div>
+
+                <h2 class="section-title">
+                    BOOK A <span>MATCH</span>
+                </h2>
+
+                <p class="section-description">
+
+                    Think your team is ready?
+
+                    Send Valoric FC a match request.
+
+                    Your request will be sent to:
+
+                    <strong style="color:#c084fc;">
+                        fcvaloric@gmail.com
+                    </strong>
+
+                </p>
+
+
+                <ul class="booking-points">
+
+                    <li>
+                        <span class="check">✓</span>
+                        Quick match requests
+                    </li>
+
+                    <li>
+                        <span class="check">✓</span>
+                        Direct contact with Valoric FC
+                    </li>
+
+                    <li>
+                        <span class="check">✓</span>
+                        Friendly and competitive matches
+                    </li>
+
+                    <li>
+                        <span class="check">✓</span>
+                        Email notification
+                    </li>
+
+                </ul>
+
             </div>
-            <h2 class="title">
-                FOLLOW THE <span>JOURNEY</span>
-            </h2>
-            <p>
-                Follow Valoric FC, support the players
-                and stay connected with the club.
-            </p>
-            <div class="socials">
-                <a
-                    class="social"
-                    href="https://www.instagram.com/valoric_fc/"
-                    target="_blank"
+
+
+            <!-- =================================================
+                 GMAIL FORM
+                 ================================================= -->
+
+            <div class="booking-form reveal">
+
+                <form
+                    id="matchForm"
+                    action="https://formsubmit.co/fcvaloric@gmail.com"
+                    method="POST"
                 >
-                    📸 INSTAGRAM
-                </a>
-                <a
-                    class="social"
-                    href="mailto:fcvaloric@gmail.com"
-                >
-                    ✉️ EMAIL
-                </a>
-                <a
-                    class="social"
-                    href="#book"
-                >
-                    ⚡ BOOK A MATCH
-                </a>
+
+                    <!-- FormSubmit settings -->
+
+                    <input
+                        type="hidden"
+                        name="_subject"
+                        value="VALORIC FC — New Match Request"
+                    >
+
+                    <input
+                        type="hidden"
+                        name="_template"
+                        value="table"
+                    >
+
+                    <input
+                        type="hidden"
+                        name="_captcha"
+                        value="true"
+                    >
+
+                    <input
+                        type="hidden"
+                        name="_next"
+                        value="https://valoricfc.github.io/"
+                    >
+
+
+                    <!-- REQUIRED -->
+
+                    <div class="form-grid">
+
+                        <div class="form-group">
+
+                            <label>
+                                CONTACT PERSON *
+                            </label>
+
+                            <input
+                                type="text"
+                                name="Contact Person"
+                                placeholder="Your full name"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>
+                                TEAM NAME *
+                            </label>
+
+                            <input
+                                type="text"
+                                name="Team Name"
+                                placeholder="Your team name"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-grid">
+
+                        <div class="form-group">
+
+                            <label>
+                                PHONE NUMBER *
+                            </label>
+
+                            <input
+                                type="tel"
+                                name="Phone Number"
+                                placeholder="+880..."
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>
+                                PREFERRED DATE *
+                            </label>
+
+                            <input
+                                type="date"
+                                name="Preferred Date"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- OPTIONAL -->
+
+                    <div class="form-group">
+
+                        <label>
+                            MATCH TYPE
+                        </label>
+
+                        <select name="Match Type">
+
+                            <option value="">
+                                Optional — Select Match Type
+                            </option>
+
+                            <option>
+                                Friendly Match
+                            </option>
+
+                            <option>
+                                Competitive Match
+                            </option>
+
+                            <option>
+                                Tournament Invitation
+                            </option>
+
+                            <option>
+                                Other
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            LOCATION & DETAILS
+                        </label>
+
+                        <textarea
+                            name="Location & Details"
+                            placeholder="Location, preferred time and additional information..."
+                        ></textarea>
+
+                    </div>
+
+
+                    <p class="privacy-note">
+
+                        Name, team, phone number and preferred
+                        date are required. Match type and
+                        location/details are optional.
+
+                    </p>
+
+
+                    <button
+                        type="submit"
+                        class="button button-primary"
+                    >
+                        ⚡ SEND MATCH REQUEST
+                    </button>
+
+
+                    <div
+                        class="form-message"
+                        id="formMessage"
+                    ></div>
+
+                </form>
+
             </div>
+
         </div>
+
     </div>
+
 </section>
-<!-- FOOTER -->
-<footer>
-    <div class="footer">
-        <div class="footer-name">
-            VALORIC <span>FC</span>
+
+
+<!-- =====================================================
+     SUPPORTERS
+     ===================================================== -->
+
+<section class="support-section" id="support">
+
+    <div class="container">
+
+        <div class="support-box reveal">
+
+            <div class="support-content">
+
+                <div class="section-tag">
+                    VALORIC FAMILY
+                </div>
+
+                <h2 class="section-title">
+                    BECOME A <span>SUPPORTER</span>
+                </h2>
+
+                <p>
+                    Follow the Valoric FC journey,
+                    support the players and become
+                    part of the community.
+                </p>
+
+
+                <div class="social-buttons">
+
+                    <a
+                        href="https://www.instagram.com/valoric_fc/"
+                        target="_blank"
+                        class="social-button"
+                    >
+                        📸 INSTAGRAM
+                    </a>
+
+
+                    <a
+                        href="https://www.instagram.com/valoric_fc/"
+                        target="_blank"
+                        class="social-button"
+                    >
+                        💬 CONTACT US
+                    </a>
+
+                </div>
+
+            </div>
+
         </div>
-        <div class="footer-text">
-            © 2026 VALORIC FC • POWERED BY VALOR
-        </div>
-        <div class="footer-text">
-            HALISHAHAR, CHATTOGRAM
-        </div>
+
     </div>
+
+</section>
+
+
+<!-- =====================================================
+     FOOTER
+     ===================================================== -->
+
+<footer>
+
+    <div class="footer-content">
+
+        <div class="footer-brand">
+
+            VALORIC <span>FC</span>
+
+        </div>
+
+
+        <div class="copyright">
+
+            © 2026 VALORIC FC.
+            POWERED BY VALOR.
+
+        </div>
+
+
+        <div class="copyright">
+
+            HALISHAHAR, CHATTOGRAM
+
+        </div>
+
+    </div>
+
 </footer>
-<button id="top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+
+
+<!-- =====================================================
+     BACK TO TOP
+     ===================================================== -->
+
+<button
+    id="backToTop"
+    onclick="scrollToTop()"
+>
     ↑
 </button>
+
+
+<!-- =====================================================
+     JAVASCRIPT
+     ===================================================== -->
+
 <script>
-/* ---------------- LOADER ---------------- */
+
+/* =====================================================
+   LOADER
+   ===================================================== */
+
 window.addEventListener("load",function(){
+
+    const loader=document.getElementById("loader");
+
     setTimeout(function(){
-        const loader=document.getElementById("loader");
+
         loader.style.opacity="0";
         loader.style.visibility="hidden";
+
     },700);
+
 });
-/* ---------------- MOBILE MENU ---------------- */
+
+
+/* =====================================================
+   MOBILE MENU
+   ===================================================== */
+
 function toggleMenu(){
-    const menu=document.getElementById("navLinks");
-    menu.classList.toggle("open");
+
+    const menu=document.getElementById("mobileMenu");
+
+    menu.classList.toggle("active");
+
 }
-document.querySelectorAll(".nav-links a").forEach(function(link){
-    link.addEventListener("click",function(){
-        document.getElementById("navLinks").classList.remove("open");
-    });
-});
-/* ---------------- REVEAL ANIMATION ---------------- */
-const observer=new IntersectionObserver(
-    function(entries){
-        entries.forEach(function(entry){
-            if(entry.isIntersecting){
-                entry.target.classList.add("show");
-            }
-        });
-    },
-    {
-        threshold:.12
-    }
-);
-document.querySelectorAll(".reveal").forEach(function(element){
-    observer.observe(element);
-});
-/* ---------------- SCROLL FIRE ---------------- */
+
+function closeMenu(){
+
+    const menu=document.getElementById("mobileMenu");
+
+    menu.classList.remove("active");
+
+}
+
+
+/* =====================================================
+   SCROLL FIRE
+   ===================================================== */
+
+let scrollTimer;
+
 window.addEventListener("scroll",function(){
-    const fire=document.querySelectorAll(".fire");
-    const scrollAmount=window.scrollY;
-    if(scrollAmount>120){
-        fire.forEach(function(element){
-            element.classList.add("active");
-        });
-    }else{
-        fire.forEach(function(element){
-            element.classList.remove("active");
-        });
-    }
-    /* BACK TO TOP */
-    const top=document.getElementById("top");
-    if(scrollAmount>500){
-        top.style.display="flex";
-    }else{
-        top.style.display="none";
-    }
+
+    document.body.classList.add("scrolling");
+
+    clearTimeout(scrollTimer);
+
+    scrollTimer=setTimeout(function(){
+
+        document.body.classList.remove("scrolling");
+
+    },180);
+
 });
-/* ---------------- DATE ---------------- */
-const dateInput=document.getElementById("date");
-const today=new Date();
-const year=today.getFullYear();
-const month=String(today.getMonth()+1).padStart(2,"0");
-const day=String(today.getDate()).padStart(2,"0");
-dateInput.min=year+"-"+month+"-"+day;
-/* ---------------- FORM ---------------- */
-/*
-   FormSubmit handles the email delivery.
-   The form itself is intentionally not intercepted
-   by JavaScript so the information can actually
-   be submitted to the email service.
-*/
-document.getElementById("matchForm").addEventListener("submit",function(){
-    document.getElementById("success").style.display="block";
+
+
+/* =====================================================
+   BACK TO TOP
+   ===================================================== */
+
+window.addEventListener("scroll",function(){
+
+    const button=document.getElementById("backToTop");
+
+    if(window.scrollY>500){
+
+        button.style.display="flex";
+
+    }else{
+
+        button.style.display="none";
+
+    }
+
 });
+
+
+function scrollToTop(){
+
+    window.scrollTo({
+
+        top:0,
+
+        behavior:"smooth"
+
+    });
+
+}
+
+
+/* =====================================================
+   REVEAL ANIMATIONS
+   ===================================================== */
+
+const revealElements=
+    document.querySelectorAll(".reveal");
+
+const observer=
+    new IntersectionObserver(
+
+        function(entries){
+
+            entries.forEach(function(entry){
+
+                if(entry.isIntersecting){
+
+                    entry.target.classList.add("visible");
+
+                    observer.unobserve(entry.target);
+
+                }
+
+            });
+
+        },
+
+        {
+            threshold:.12
+        }
+
+    );
+
+
+revealElements.forEach(function(element){
+
+    observer.observe(element);
+
+});
+
+
+/* =====================================================
+   BOOKING FORM
+   ===================================================== */
+
+const matchForm=
+    document.getElementById("matchForm");
+
+const formMessage=
+    document.getElementById("formMessage");
+
+
+matchForm.addEventListener("submit",function(){
+
+    formMessage.style.display="block";
+
+    formMessage.innerHTML=
+        "✓ Your match request is being sent to VALORIC FC.";
+
+});
+
+
+/* =====================================================
+   PREVENT OLD DATES
+   ===================================================== */
+
+const dateInput=
+    document.querySelector(
+        'input[name="Preferred Date"]'
+    );
+
+
+const today=
+    new Date().toISOString().split("T")[0];
+
+
+dateInput.setAttribute("min",today);
+
+
+/* =====================================================
+   CLOSE MOBILE MENU WHEN CLICKING OUTSIDE
+   ===================================================== */
+
+document.addEventListener("click",function(event){
+
+    const menu=
+        document.getElementById("mobileMenu");
+
+    const button=
+        document.getElementById("menuButton");
+
+    if(
+        menu.classList.contains("active") &&
+        !menu.contains(event.target) &&
+        !button.contains(event.target)
+    ){
+
+        menu.classList.remove("active");
+
+    }
+
+});
+
+
+/* =====================================================
+   ESC KEY MENU CLOSE
+   ===================================================== */
+
+document.addEventListener("keydown",function(event){
+
+    if(event.key==="Escape"){
+
+        closeMenu();
+
+    }
+
+});
+
 </script>
+
 </body>
 </html>
