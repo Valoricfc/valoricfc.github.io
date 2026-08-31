@@ -2,2002 +2,1152 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Valoric FC | Powered by Valor</title>
-
-<meta name="description"
-content="Valoric FC — Powered by Valor. A football community built on passion, courage and ambition.">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Orbitron:wght@500;600;700;800;900&display=swap" rel="stylesheet">
-
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>VALORIC FC | Powered by Valor</title>
+<meta name="description" content="VALORIC FC — Powered by Valor.">
 <style>
-
-/* =====================================================
-   VALORIC FC
-   FUTURISTIC PURPLE EDITION
-===================================================== */
-
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Orbitron:wght@500;600;700;800;900&display=swap');
 :root{
-    --purple:#9d4edd;
-    --purple2:#c77dff;
-    --purple3:#7b2cbf;
-    --purple-dark:#3c096c;
-
-    --black:#050407;
-    --black2:#09070d;
-    --card:#100c16;
-
-    --white:#ffffff;
-    --soft:#eeeeee;
-    --gray:#a9a2b0;
-
-    --border:rgba(199,125,255,.18);
-
-    --shadow:0 20px 70px rgba(0,0,0,.55);
+--purple:#9b5cff;
+--purple2:#c084ff;
+--white:#fff;
+--gray:#b9b3c8;
+--black:#050507;
+--card:#0e0d13;
+--border:rgba(155,92,255,.25);
 }
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-html{
-    scroll-behavior:smooth;
-}
-
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
 body{
-    background:
-        radial-gradient(circle at 50% -10%,rgba(157,78,221,.12),transparent 35%),
-        var(--black);
-    color:var(--white);
-    font-family:"Inter",Arial,sans-serif;
-    overflow-x:hidden;
+background:var(--black);
+color:white;
+font-family:Inter,Arial,sans-serif;
+overflow-x:hidden;
 }
-
-::selection{
-    background:var(--purple2);
-    color:#000;
+a{text-decoration:none;color:inherit}
+button,input,textarea,select{font:inherit}
+::selection{background:var(--purple);color:white}
+body:before{
+content:"";
+position:fixed;
+inset:0;
+pointer-events:none;
+z-index:-5;
+background:
+linear-gradient(rgba(155,92,255,.035) 1px,transparent 1px),
+linear-gradient(90deg,rgba(155,92,255,.035) 1px,transparent 1px);
+background-size:55px 55px;
 }
-
-a{
-    color:inherit;
-    text-decoration:none;
-}
-
-button,
-input,
-textarea,
-select{
-    font:inherit;
-}
-
-/* =====================================================
-   BACKGROUND
-===================================================== */
-
-.background-grid{
-    position:fixed;
-    inset:0;
-    pointer-events:none;
-    z-index:-5;
-    opacity:.16;
-
-    background-image:
-        linear-gradient(rgba(199,125,255,.045) 1px,transparent 1px),
-        linear-gradient(90deg,rgba(199,125,255,.045) 1px,transparent 1px);
-
-    background-size:55px 55px;
-}
-
-.background-glow{
-    position:fixed;
-    width:550px;
-    height:550px;
-    border-radius:50%;
-    filter:blur(180px);
-    pointer-events:none;
-    z-index:-4;
-    opacity:.12;
-    background:var(--purple);
-}
-
-.glow-left{
-    left:-300px;
-    top:15%;
-}
-
-.glow-right{
-    right:-300px;
-    bottom:10%;
-}
-
-/* =====================================================
-   PURPLE SIDE FIRE
-===================================================== */
-
+/* PURPLE FIRE SIDES */
 .fire{
-    position:fixed;
-    width:180px;
-    height:100vh;
-    top:0;
-    pointer-events:none;
-    z-index:-1;
-    opacity:.55;
-    filter:blur(18px);
+position:fixed;
+top:0;
+bottom:0;
+width:150px;
+pointer-events:none;
+z-index:-1;
+opacity:.7;
+filter:blur(16px);
 }
-
-.fire-left{
-    left:-90px;
+.fire.left{left:-100px}
+.fire.right{right:-100px}
+.fire:before,
+.fire:after{
+content:"";
+position:absolute;
+bottom:-80px;
+width:130px;
+height:55%;
+background:
+radial-gradient(ellipse at bottom,
+rgba(192,132,255,.65),
+rgba(155,92,255,.3) 35%,
+transparent 70%);
+animation:fire 2.7s ease-in-out infinite alternate;
 }
-
-.fire-right{
-    right:-90px;
-    transform:scaleX(-1);
+.fire:after{
+animation-delay:1s;
+height:42%;
+opacity:.7;
 }
-
-.fire::before,
-.fire::after{
-    content:"";
-    position:absolute;
-    bottom:-80px;
-    width:150px;
-    height:75%;
-    border-radius:50% 50% 20% 20%;
-    background:
-        radial-gradient(
-            ellipse at bottom,
-            rgba(199,125,255,.9) 0%,
-            rgba(157,78,221,.55) 25%,
-            rgba(123,44,191,.3) 45%,
-            transparent 72%
-        );
-    filter:blur(25px);
-    animation:fireMove 2.8s ease-in-out infinite alternate;
+.fire.right:before,
+.fire.right:after{
+right:0;
 }
-
-.fire::after{
-    width:100px;
-    height:55%;
-    left:50px;
-    opacity:.65;
-    animation-delay:-1.2s;
-    animation-duration:2.1s;
+@keyframes fire{
+0%{transform:translateY(30px) scaleX(.8)}
+50%{transform:translateY(-20px) scaleX(1.15)}
+100%{transform:translateY(-55px) scaleX(.85)}
 }
-
-@keyframes fireMove{
-    0%{
-        transform:translateY(25px) scaleY(.9) rotate(-4deg);
-    }
-
-    50%{
-        transform:translateY(-25px) scaleY(1.05) rotate(5deg);
-    }
-
-    100%{
-        transform:translateY(10px) scaleY(.95) rotate(-2deg);
-    }
-}
-
-/* =====================================================
-   LOADER
-===================================================== */
-
+/* LOADER */
 #loader{
-    position:fixed;
-    inset:0;
-    background:#050407;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    z-index:99999;
-    transition:opacity .7s ease,visibility .7s ease;
+position:fixed;
+inset:0;
+background:#050507;
+z-index:9999;
+display:flex;
+align-items:center;
+justify-content:center;
+transition:.6s;
 }
-
-.loader-inner{
-    text-align:center;
-}
-
+.loader-box{text-align:center}
 .loader-ring{
-    width:75px;
-    height:75px;
-    border-radius:50%;
-    border:2px solid rgba(199,125,255,.15);
-    border-top-color:var(--purple2);
-    animation:spin 1s linear infinite;
-    margin:auto auto 25px;
+width:75px;height:75px;
+border:2px solid rgba(155,92,255,.2);
+border-top-color:var(--purple2);
+border-radius:50%;
+animation:spin 1s linear infinite;
+margin:auto auto 20px;
 }
-
-.loader-text{
-    font-family:"Orbitron",sans-serif;
-    letter-spacing:5px;
-    color:var(--purple2);
-    font-size:13px;
+.loader-box h3{
+font-family:Orbitron;
+letter-spacing:4px;
+font-size:13px;
 }
-
-@keyframes spin{
-    to{
-        transform:rotate(360deg);
-    }
+@keyframes spin{to{transform:rotate(360deg)}}
+/* NAV */
+nav{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:78px;
+z-index:1000;
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:0 7%;
+background:rgba(5,5,7,.78);
+backdrop-filter:blur(20px);
+border-bottom:1px solid rgba(255,255,255,.06);
 }
-
-/* =====================================================
-   NAVBAR
-===================================================== */
-
-.navbar{
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    height:78px;
-
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-
-    padding:0 7%;
-
-    background:rgba(5,4,7,.78);
-    backdrop-filter:blur(20px);
-
-    border-bottom:1px solid rgba(255,255,255,.06);
-
-    z-index:5000;
-}
-
 .brand{
-    display:flex;
-    align-items:center;
-    gap:12px;
+display:flex;
+align-items:center;
+gap:12px;
+font-family:Orbitron;
+font-weight:900;
+letter-spacing:2px;
 }
-
-.logo-small{
-    width:43px;
-    height:43px;
-    object-fit:contain;
-    border-radius:10px;
-    background:#fff;
-    padding:3px;
-    box-shadow:0 0 25px rgba(199,125,255,.2);
+.brand img{
+width:43px;
+height:43px;
+border-radius:10px;
+object-fit:cover;
 }
-
-.brand-name{
-    font-family:"Orbitron",sans-serif;
-    font-size:15px;
-    font-weight:900;
-    letter-spacing:2px;
-}
-
-.brand-name span{
-    color:var(--purple2);
-}
-
+.brand span{color:var(--purple2)}
 .nav-links{
-    display:flex;
-    align-items:center;
-    gap:25px;
-    list-style:none;
+display:flex;
+align-items:center;
+gap:25px;
+list-style:none;
 }
-
 .nav-links a{
-    color:#c8c2cd;
-    font-size:12px;
-    font-weight:700;
-    transition:.25s;
+font-size:13px;
+font-weight:700;
+color:#bcb7c7;
+transition:.25s;
 }
-
-.nav-links a:hover{
-    color:var(--purple2);
+.nav-links a:hover{color:white}
+.book-nav{
+padding:11px 17px;
+background:var(--purple);
+border-radius:9px;
+color:white!important;
 }
-
-.nav-cta{
-    background:var(--purple);
-    color:#fff!important;
-    padding:11px 17px;
-    border-radius:8px;
-    box-shadow:0 0 25px rgba(157,78,221,.2);
+.menu{
+display:none;
+width:44px;
+height:44px;
+background:#100e16;
+border:1px solid var(--border);
+border-radius:10px;
+color:white;
+font-size:21px;
+cursor:pointer;
 }
-
-.menu-button{
-    display:none;
-    width:45px;
-    height:45px;
-    border-radius:10px;
-    background:rgba(255,255,255,.04);
-    border:1px solid var(--border);
-    color:#fff;
-    font-size:21px;
-    cursor:pointer;
+/* MOBILE MENU */
+.mobile-panel{
+position:fixed;
+top:78px;
+right:-100%;
+width:78%;
+max-width:330px;
+background:#09080d;
+border-left:1px solid var(--border);
+border-bottom:1px solid var(--border);
+padding:25px;
+z-index:999;
+transition:.35s;
 }
-
-/* =====================================================
-   MOBILE MENU
-===================================================== */
-
-.mobile-menu{
-    position:fixed;
-    top:78px;
-    left:0;
-    width:100%;
-    background:rgba(7,5,9,.97);
-    backdrop-filter:blur(20px);
-
-    padding:20px 7%;
-
-    display:none;
-
-    border-bottom:1px solid var(--border);
-
-    z-index:4900;
+.mobile-panel.open{right:0}
+.mobile-panel a{
+display:block;
+padding:17px 10px;
+border-bottom:1px solid rgba(255,255,255,.06);
+font-weight:700;
+color:#ddd;
 }
-
-.mobile-menu.active{
-    display:block;
-}
-
-.mobile-menu a{
-    display:block;
-    padding:15px 0;
-    color:#ddd;
-    font-weight:700;
-    border-bottom:1px solid rgba(255,255,255,.05);
-}
-
-/* =====================================================
-   HERO
-===================================================== */
-
+.mobile-panel a:hover{color:var(--purple2)}
+/* HERO */
 .hero{
-    min-height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
-
-    padding:130px 20px 90px;
-
-    position:relative;
-    overflow:hidden;
+min-height:100vh;
+padding:150px 20px 100px;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+position:relative;
+overflow:hidden;
 }
-
-.hero-orbit{
-    position:absolute;
-    width:540px;
-    height:540px;
-    border:1px solid rgba(199,125,255,.12);
-    border-radius:50%;
-
-    box-shadow:
-        0 0 100px rgba(157,78,221,.08),
-        inset 0 0 100px rgba(157,78,221,.04);
-
-    animation:orbitPulse 5s ease-in-out infinite;
+.hero-glow{
+position:absolute;
+width:600px;
+height:600px;
+border-radius:50%;
+background:var(--purple);
+filter:blur(220px);
+opacity:.09;
+animation:orb 5s ease-in-out infinite;
 }
-
-@keyframes orbitPulse{
-    0%,100%{
-        transform:scale(1);
-    }
-    50%{
-        transform:scale(1.06);
-    }
+@keyframes orb{
+50%{transform:scale(1.15);opacity:.14}
 }
-
-.hero-content{
-    position:relative;
-    z-index:2;
-    max-width:950px;
-}
-
+.hero-content{position:relative;z-index:2}
 .badge{
-    display:inline-flex;
-    align-items:center;
-    gap:9px;
-
-    padding:9px 15px;
-
-    border:1px solid var(--border);
-    background:rgba(157,78,221,.07);
-
-    border-radius:50px;
-
-    color:var(--purple2);
-
-    font-size:10px;
-    font-weight:800;
-    letter-spacing:2px;
-
-    margin-bottom:28px;
+display:inline-flex;
+align-items:center;
+gap:9px;
+padding:9px 15px;
+border:1px solid var(--border);
+background:rgba(155,92,255,.07);
+border-radius:50px;
+font-size:11px;
+font-weight:800;
+letter-spacing:2px;
+color:var(--purple2);
+margin-bottom:25px;
 }
-
 .dot{
-    width:8px;
-    height:8px;
-    border-radius:50%;
-    background:var(--purple2);
-    box-shadow:0 0 15px var(--purple2);
-    animation:blink 1.5s infinite;
+width:7px;height:7px;
+background:var(--purple2);
+border-radius:50%;
+box-shadow:0 0 15px var(--purple2);
 }
-
-@keyframes blink{
-    50%{
-        opacity:.3;
-    }
-}
-
 .hero-logo{
-    width:155px;
-    height:155px;
-    object-fit:contain;
-
-    border-radius:30px;
-
-    background:#fff;
-    padding:7px;
-
-    box-shadow:
-        0 0 70px rgba(157,78,221,.2),
-        0 20px 60px rgba(0,0,0,.5);
-
-    margin:0 auto 27px;
-
-    animation:logoFloat 4s ease-in-out infinite;
+width:155px;
+height:155px;
+object-fit:cover;
+border-radius:30px;
+border:1px solid var(--border);
+box-shadow:0 0 80px rgba(155,92,255,.25);
+margin-bottom:27px;
+animation:float 4s ease-in-out infinite;
 }
-
-@keyframes logoFloat{
-    0%,100%{
-        transform:translateY(0);
-    }
-    50%{
-        transform:translateY(-9px);
-    }
+@keyframes float{
+50%{transform:translateY(-10px)}
 }
-
-.hero h1{
-    font-family:"Orbitron",sans-serif;
-    font-size:clamp(50px,10vw,115px);
-    line-height:1;
-    font-weight:900;
-    letter-spacing:5px;
-    margin-bottom:20px;
+h1{
+font-family:Orbitron;
+font-size:clamp(48px,9vw,110px);
+font-weight:900;
+letter-spacing:5px;
+line-height:1;
 }
-
-.hero h1 span{
-    color:var(--purple2);
-    text-shadow:0 0 35px rgba(199,125,255,.35);
-}
-
+h1 span{color:var(--purple2)}
 .motto{
-    font-family:"Orbitron",sans-serif;
-    font-size:clamp(12px,2vw,18px);
-    letter-spacing:6px;
-    color:#ddd;
-    margin-bottom:28px;
+font-family:Orbitron;
+font-size:clamp(12px,2vw,18px);
+letter-spacing:6px;
+color:#c9c3d1;
+margin:25px 0;
 }
-
-.hero-description{
-    max-width:650px;
-    margin:auto;
-    color:var(--gray);
-    line-height:1.8;
-    font-size:15px;
+.hero p.desc{
+max-width:650px;
+margin:auto;
+color:var(--gray);
+line-height:1.8;
+font-size:15px;
 }
-
-.hero-buttons{
-    margin-top:35px;
-    display:flex;
-    justify-content:center;
-    gap:14px;
-    flex-wrap:wrap;
+.buttons{
+display:flex;
+justify-content:center;
+gap:13px;
+flex-wrap:wrap;
+margin-top:30px;
 }
-
-.button{
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-    gap:8px;
-
-    padding:15px 23px;
-
-    border-radius:10px;
-
-    font-weight:800;
-    font-size:13px;
-
-    cursor:pointer;
-
-    transition:.3s;
+.btn{
+padding:15px 23px;
+border-radius:10px;
+font-size:13px;
+font-weight:800;
+border:1px solid var(--border);
+transition:.3s;
+cursor:pointer;
 }
-
 .primary{
-    background:var(--purple);
-    color:#fff;
-    box-shadow:0 10px 35px rgba(157,78,221,.2);
+background:var(--purple);
+color:white;
 }
-
 .primary:hover{
-    transform:translateY(-4px);
-    box-shadow:0 15px 45px rgba(157,78,221,.35);
+transform:translateY(-4px);
+box-shadow:0 15px 40px rgba(155,92,255,.3);
 }
-
 .secondary{
-    background:rgba(255,255,255,.035);
-    border:1px solid rgba(255,255,255,.12);
-    color:#fff;
+background:rgba(255,255,255,.04);
 }
-
 .secondary:hover{
-    border-color:var(--purple2);
-    color:var(--purple2);
+border-color:var(--purple);
+color:var(--purple2);
 }
-
-.scroll-down{
-    position:absolute;
-    bottom:25px;
-    left:50%;
-    transform:translateX(-50%);
-
-    color:#777;
-    font-size:9px;
-    letter-spacing:3px;
-
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    gap:8px;
+.scroll{
+position:absolute;
+bottom:25px;
+font-size:9px;
+letter-spacing:3px;
+color:#706b79;
 }
-
-.scroll-line{
-    width:1px;
-    height:40px;
-    background:linear-gradient(var(--purple2),transparent);
+.scroll:after{
+content:"";
+display:block;
+width:1px;
+height:35px;
+background:linear-gradient(var(--purple),transparent);
+margin:10px auto 0;
 }
-
-/* =====================================================
-   SECTIONS
-===================================================== */
-
-section{
-    padding:105px 7%;
-}
-
-.container{
-    max-width:1250px;
-    margin:auto;
-}
-
+/* SECTIONS */
+section{padding:105px 7%}
+.container{max-width:1250px;margin:auto}
 .tag{
-    color:var(--purple2);
-    font-family:"Orbitron",sans-serif;
-    font-size:10px;
-    letter-spacing:3px;
-    margin-bottom:12px;
+font-family:Orbitron;
+font-size:10px;
+letter-spacing:3px;
+color:var(--purple2);
+margin-bottom:13px;
 }
-
 .title{
-    font-family:"Orbitron",sans-serif;
-    font-size:clamp(30px,5vw,52px);
-    line-height:1.2;
-    margin-bottom:18px;
+font-family:Orbitron;
+font-size:clamp(31px,5vw,52px);
+line-height:1.15;
+margin-bottom:17px;
 }
-
-.title span{
-    color:var(--purple2);
+.title span{color:var(--purple2)}
+.desc{
+color:var(--gray);
+line-height:1.8;
+font-size:15px;
 }
-
-.description{
-    color:var(--gray);
-    max-width:700px;
-    line-height:1.8;
-    font-size:15px;
-}
-
-/* =====================================================
-   CLUB
-===================================================== */
-
+/* CLUB */
 .club{
-    background:
-        linear-gradient(180deg,#0a080d,#050407);
+background:linear-gradient(180deg,#09080d,#050507);
 }
-
 .club-grid{
-    display:grid;
-    grid-template-columns:1.1fr .9fr;
-    gap:60px;
-    align-items:center;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:60px;
+align-items:center;
 }
-
-.club-text{
-    margin-top:25px;
-}
-
 .club-text p{
-    color:var(--gray);
-    line-height:1.9;
-    margin-bottom:17px;
+color:var(--gray);
+line-height:1.8;
+margin:15px 0;
 }
-
-.club-text strong{
-    color:var(--purple2);
-}
-
+.club-text strong{color:var(--purple2)}
 .club-card{
-    min-height:390px;
-    border-radius:25px;
-
-    background:
-        radial-gradient(circle at 50% 30%,rgba(157,78,221,.2),transparent 40%),
-        #0e0a13;
-
-    border:1px solid var(--border);
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-    position:relative;
-    overflow:hidden;
-
-    box-shadow:var(--shadow);
+height:370px;
+border:1px solid var(--border);
+border-radius:25px;
+background:
+radial-gradient(circle at center,rgba(155,92,255,.16),transparent 55%),
+#0b0a10;
+display:flex;
+align-items:center;
+justify-content:center;
+position:relative;
+overflow:hidden;
 }
-
-.club-card::before{
-    content:"";
-    position:absolute;
-    inset:25px;
-    border:1px solid rgba(199,125,255,.1);
-    border-radius:20px;
-}
-
 .club-card img{
-    width:180px;
-    height:180px;
-    object-fit:contain;
-    background:#fff;
-    padding:8px;
-    border-radius:25px;
-    position:relative;
-    z-index:2;
-    box-shadow:0 0 60px rgba(157,78,221,.25);
+width:180px;
+height:180px;
+object-fit:cover;
+border-radius:30px;
+box-shadow:0 0 70px rgba(155,92,255,.3);
 }
-
-/* =====================================================
-   LEADERS
-===================================================== */
-
-.leaders{
-    padding-top:40px;
-    padding-bottom:40px;
+/* INFO */
+.info-grid{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:14px;
 }
-
-.leader-grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:16px;
+.info-card{
+padding:27px 15px;
+text-align:center;
+background:#0d0c12;
+border:1px solid rgba(255,255,255,.07);
+border-radius:16px;
+transition:.3s;
 }
-
-.leader-card{
-    background:var(--card);
-    border:1px solid rgba(255,255,255,.07);
-    border-radius:16px;
-    padding:27px;
-    text-align:center;
-    transition:.3s;
+.info-card:hover{
+transform:translateY(-6px);
+border-color:var(--border);
 }
-
-.leader-card:hover{
-    transform:translateY(-6px);
-    border-color:var(--border);
+.big{
+font-family:Orbitron;
+font-size:30px;
+font-weight:900;
+color:var(--purple2);
 }
-
-.leader-number{
-    font-family:"Orbitron",sans-serif;
-    font-size:30px;
-    color:var(--purple2);
-    font-weight:900;
+.small{
+margin-top:7px;
+font-size:12px;
+color:var(--gray);
 }
-
-.leader-role{
-    margin-top:8px;
-    color:#999;
-    font-size:11px;
-    letter-spacing:2px;
-}
-
-.leader-name{
-    margin-top:8px;
-    font-size:17px;
-    font-weight:800;
-}
-
-/* =====================================================
-   PLAYERS
-===================================================== */
-
+/* PLAYERS */
 .players{
-    background:#08060b;
+background:#08070c;
 }
-
 .section-head{
-    display:flex;
-    justify-content:space-between;
-    align-items:end;
-    gap:30px;
-    margin-bottom:40px;
+display:flex;
+justify-content:space-between;
+align-items:end;
+gap:30px;
+margin-bottom:40px;
 }
-
 .players-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:17px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+gap:16px;
 }
-
 .player{
-    background:var(--card);
-    border:1px solid rgba(255,255,255,.07);
-    border-radius:17px;
-    overflow:hidden;
-    transition:.3s;
+background:#0e0d13;
+border:1px solid rgba(255,255,255,.07);
+border-radius:17px;
+padding:22px;
+transition:.3s;
+position:relative;
+overflow:hidden;
 }
-
 .player:hover{
-    transform:translateY(-7px);
-    border-color:rgba(199,125,255,.35);
-    box-shadow:var(--shadow);
+transform:translateY(-7px);
+border-color:var(--border);
+box-shadow:0 20px 50px rgba(0,0,0,.4);
 }
-
-.player-top{
-    min-height:125px;
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-    background:
-        radial-gradient(circle,rgba(157,78,221,.17),transparent 65%),
-        #0b080e;
-
-    position:relative;
+.player:before{
+content:"";
+position:absolute;
+width:100px;
+height:100px;
+background:var(--purple);
+filter:blur(70px);
+opacity:.08;
+right:-30px;
+top:-30px;
 }
-
-.jersey{
-    font-family:"Orbitron",sans-serif;
-    font-size:45px;
-    font-weight:900;
-    color:rgba(255,255,255,.11);
-}
-
 .number{
-    position:absolute;
-    right:13px;
-    top:12px;
-
-    color:rgba(199,125,255,.45);
-
-    font-family:"Orbitron",sans-serif;
-    font-size:19px;
-    font-weight:900;
+font-family:Orbitron;
+font-size:27px;
+color:rgba(255,255,255,.18);
+font-weight:900;
 }
-
-.player-info{
-    padding:17px;
+.player h3{
+font-family:Orbitron;
+font-size:14px;
+margin:14px 0 7px;
 }
-
-.player-name{
-    font-size:15px;
-    font-weight:900;
-    margin-bottom:6px;
+.position{
+color:var(--purple2);
+font-size:11px;
+font-weight:800;
+letter-spacing:1px;
 }
-
-.player-position{
-    color:var(--purple2);
-    font-size:10px;
-    font-weight:800;
-    letter-spacing:1px;
+.captain{
+border-color:rgba(192,132,255,.45);
 }
-
-/* CAPTAIN SPECIAL */
-
-.player.captain{
-    border-color:rgba(199,125,255,.4);
-    box-shadow:0 0 30px rgba(157,78,221,.08);
+/* JOURNEY */
+.journey-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:18px;
+margin-top:40px;
 }
-
-.player.captain .player-name::after{
-    content:"  • CAPTAIN";
-    color:var(--purple2);
-    font-size:8px;
+.journey-card{
+padding:30px;
+background:linear-gradient(145deg,#111016,#09080c);
+border:1px solid rgba(255,255,255,.07);
+border-radius:18px;
+transition:.3s;
 }
-
-.player.vice .player-name::after{
-    content:"  • VICE CAPTAIN";
-    color:#bbb;
-    font-size:8px;
+.journey-card:hover{
+transform:translateY(-6px);
+border-color:var(--border);
 }
-
-/* =====================================================
-   MATCH HISTORY
-===================================================== */
-
-.history{
-    background:
-        radial-gradient(circle at 50% 0%,rgba(157,78,221,.08),transparent 40%),
-        #050407;
+.journey-icon{font-size:28px;margin-bottom:18px}
+.journey-card h3{
+font-family:Orbitron;
+font-size:15px;
+margin-bottom:10px;
 }
-
-.history-grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:18px;
-    margin-top:40px;
+.journey-card p{
+color:var(--gray);
+font-size:13px;
+line-height:1.7;
 }
-
-.history-card{
-    background:var(--card);
-    border:1px solid rgba(255,255,255,.07);
-    border-radius:18px;
-    padding:30px;
-    text-align:center;
+/* TOP SCORER */
+.scorer{
+margin-top:35px;
+padding:25px;
+border:1px solid var(--border);
+border-radius:16px;
+background:rgba(155,92,255,.05);
 }
-
-.history-icon{
-    font-size:30px;
-    margin-bottom:13px;
-}
-
-.history-card h3{
-    font-family:"Orbitron",sans-serif;
-    font-size:15px;
-}
-
-.history-card p{
-    color:var(--gray);
-    margin-top:9px;
-    font-size:13px;
-    line-height:1.6;
-}
-
-.top-scorer{
-    border-color:rgba(199,125,255,.3);
-}
-
-.top-scorer strong{
-    display:block;
-    color:var(--purple2);
-    font-size:22px;
-    margin-top:8px;
-}
-
-/* =====================================================
-   GALLERY
-===================================================== */
-
+.scorer strong{color:var(--purple2)}
+/* GALLERY */
 .gallery{
-    background:#08060b;
+background:#08070c;
 }
-
 .gallery-grid{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    grid-auto-rows:210px;
-    gap:14px;
-    margin-top:40px;
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:14px;
+margin-top:40px;
 }
-
-.gallery-box{
-    border:1px solid rgba(255,255,255,.07);
-    border-radius:17px;
-    background:
-        linear-gradient(135deg,#160d20,#08060b);
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
-    color:#999;
-    transition:.3s;
-    overflow:hidden;
+.media{
+height:190px;
+border-radius:17px;
+border:1px solid rgba(255,255,255,.07);
+background:
+linear-gradient(135deg,rgba(155,92,255,.12),#0b0a0f);
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+color:#aaa3b3;
+font-size:12px;
+overflow:hidden;
 }
-
-.gallery-box:hover{
-    transform:scale(1.02);
-    border-color:rgba(199,125,255,.3);
+.media.large{
+grid-column:span 2;
+grid-row:span 2;
+height:auto;
+min-height:394px;
 }
-
-.gallery-box.large{
-    grid-column:span 2;
-    grid-row:span 2;
+.media img{
+width:100%;
+height:100%;
+object-fit:cover;
 }
-
-.gallery-box span{
-    display:block;
-    font-size:32px;
-    margin-bottom:8px;
-}
-
-/* =====================================================
-   VIDEO HIGHLIGHTS
-===================================================== */
-
-.highlights{
-    background:#050407;
-}
-
-.video-grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:18px;
-    margin-top:40px;
-}
-
-.video-box{
-    aspect-ratio:16/9;
-    border-radius:18px;
-
-    border:1px solid rgba(255,255,255,.08);
-
-    background:
-        radial-gradient(circle,rgba(157,78,221,.14),transparent 55%),
-        #0d0911;
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-    text-align:center;
-
-    color:#aaa;
-
-    transition:.3s;
-}
-
-.video-box:hover{
-    border-color:rgba(199,125,255,.35);
-    transform:translateY(-5px);
-}
-
-.play{
-    width:60px;
-    height:60px;
-    border-radius:50%;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    background:rgba(157,78,221,.2);
-    border:1px solid rgba(199,125,255,.35);
-
-    color:#fff;
-    font-size:23px;
-
-    margin:auto auto 12px;
-}
-
-/* =====================================================
-   BOOK MATCH
-===================================================== */
-
+/* BOOKING */
 .booking{
-    background:
-        radial-gradient(circle at 0 0,rgba(157,78,221,.12),transparent 35%),
-        #050407;
+background:
+radial-gradient(circle at left,rgba(155,92,255,.1),transparent 40%),
+#050507;
 }
-
-.booking-layout{
-    display:grid;
-    grid-template-columns:.8fr 1.2fr;
-    gap:55px;
-    align-items:start;
+.booking-grid{
+display:grid;
+grid-template-columns:.8fr 1.2fr;
+gap:55px;
 }
-
-.booking-points{
-    list-style:none;
-    margin-top:28px;
+.points{
+margin-top:25px;
+list-style:none;
 }
-
-.booking-points li{
-    color:var(--gray);
-    margin-bottom:15px;
-    font-size:14px;
+.points li{
+color:var(--gray);
+margin:15px 0;
+font-size:13px;
 }
-
-.check{
-    color:var(--purple2);
-    margin-right:9px;
-}
-
+.points span{color:var(--purple2);margin-right:9px}
 .form{
-    background:#0c0910;
-    border:1px solid var(--border);
-    border-radius:20px;
-    padding:32px;
-    box-shadow:var(--shadow);
+background:#0c0b10;
+border:1px solid var(--border);
+border-radius:20px;
+padding:30px;
 }
-
-.form-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:15px;
+.form-row{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:14px;
 }
-
-.form-group{
-    margin-bottom:17px;
+.group{margin-bottom:17px}
+label{
+display:block;
+font-size:11px;
+color:var(--gray);
+margin-bottom:7px;
 }
-
-.form-group label{
-    display:block;
-    color:#aaa;
-    font-size:11px;
-    font-weight:700;
-    margin-bottom:7px;
+input,select,textarea{
+width:100%;
+background:#060609;
+color:white;
+border:1px solid rgba(255,255,255,.1);
+border-radius:9px;
+padding:14px;
+outline:none;
 }
-
-input,
-textarea,
-select{
-    width:100%;
-    padding:14px;
-
-    background:#060508;
-    color:#fff;
-
-    border:1px solid rgba(255,255,255,.09);
-    border-radius:9px;
-
-    outline:none;
-
-    transition:.25s;
+input:focus,select:focus,textarea:focus{
+border-color:var(--purple);
+box-shadow:0 0 0 3px rgba(155,92,255,.08);
 }
-
-input:focus,
-textarea:focus,
-select:focus{
-    border-color:var(--purple2);
-    box-shadow:0 0 0 3px rgba(157,78,221,.08);
-}
-
 textarea{
-    min-height:120px;
-    resize:vertical;
+min-height:120px;
+resize:vertical;
 }
-
-.optional{
-    color:#777;
-    font-size:9px;
-    margin-left:5px;
-}
-
+.required{color:#c084ff}
+.optional{color:#777}
+.form button{width:100%}
 .form-note{
-    color:#777;
-    font-size:10px;
-    line-height:1.6;
-    margin-bottom:18px;
+font-size:10px;
+color:#6f6977;
+line-height:1.6;
+margin:12px 0 17px;
 }
-
-.submit-button{
-    width:100%;
-    border:0;
+.success{
+display:none;
+margin-top:13px;
+padding:13px;
+border-radius:9px;
+background:rgba(155,92,255,.1);
+border:1px solid var(--border);
+color:var(--purple2);
+font-size:12px;
 }
-
-.form-success{
-    display:none;
-
-    margin-top:15px;
-    padding:14px;
-
-    background:rgba(157,78,221,.1);
-    border:1px solid rgba(199,125,255,.2);
-
-    border-radius:9px;
-
-    color:var(--purple2);
-
-    font-size:12px;
-    line-height:1.6;
-}
-
-/* =====================================================
-   SUPPORTERS
-===================================================== */
-
-.support{
-    padding-top:70px;
-}
-
+/* SUPPORT */
+.support{text-align:center}
 .support-box{
-    border:1px solid rgba(199,125,255,.22);
-    border-radius:25px;
-
-    padding:65px 25px;
-
-    text-align:center;
-
-    background:
-        radial-gradient(circle at 50% 0,rgba(157,78,221,.15),transparent 50%),
-        #0b080e;
+padding:65px 25px;
+border:1px solid var(--border);
+border-radius:25px;
+background:
+radial-gradient(circle at center,rgba(155,92,255,.13),transparent 60%),
+#0b0a10;
 }
-
-.support-box .description{
-    margin:0 auto 28px;
-}
-
 .socials{
-    display:flex;
-    justify-content:center;
-    gap:12px;
-    flex-wrap:wrap;
+display:flex;
+justify-content:center;
+gap:12px;
+flex-wrap:wrap;
+margin-top:25px;
 }
-
 .social{
-    padding:12px 17px;
-    border:1px solid rgba(255,255,255,.1);
-    border-radius:9px;
-    font-size:12px;
-    font-weight:700;
-    transition:.3s;
+padding:12px 17px;
+border:1px solid rgba(255,255,255,.1);
+border-radius:9px;
+font-size:12px;
+font-weight:700;
+transition:.3s;
 }
-
 .social:hover{
-    border-color:var(--purple2);
-    color:var(--purple2);
-    transform:translateY(-3px);
+border-color:var(--purple);
+color:var(--purple2);
+transform:translateY(-3px);
 }
-
-/* =====================================================
-   FOOTER
-===================================================== */
-
+/* FOOTER */
 footer{
-    border-top:1px solid rgba(255,255,255,.06);
-    background:#030205;
-    padding:38px 7%;
+padding:35px 7%;
+border-top:1px solid rgba(255,255,255,.06);
+background:#030304;
+text-align:center;
 }
-
-.footer{
-    max-width:1250px;
-    margin:auto;
-
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    gap:20px;
-}
-
 .footer-name{
-    font-family:"Orbitron",sans-serif;
-    font-weight:900;
-    letter-spacing:2px;
+font-family:Orbitron;
+font-weight:900;
+letter-spacing:2px;
 }
-
-.footer-name span{
-    color:var(--purple2);
+.footer-name span{color:var(--purple2)}
+footer p{
+font-size:11px;
+color:#65606d;
+margin-top:9px;
 }
-
-.footer-text{
-    color:#666;
-    font-size:11px;
-}
-
-/* =====================================================
-   BACK TO TOP
-===================================================== */
-
+/* TOP */
 #top{
-    position:fixed;
-    right:20px;
-    bottom:20px;
-
-    width:45px;
-    height:45px;
-
-    border-radius:50%;
-
-    background:#100b16;
-    color:var(--purple2);
-
-    border:1px solid var(--border);
-
-    display:none;
-    justify-content:center;
-    align-items:center;
-
-    cursor:pointer;
-
-    z-index:3000;
+position:fixed;
+right:18px;
+bottom:18px;
+width:45px;
+height:45px;
+border-radius:50%;
+background:#100e16;
+border:1px solid var(--border);
+color:var(--purple2);
+display:none;
+align-items:center;
+justify-content:center;
+cursor:pointer;
+z-index:500;
 }
-
-/* =====================================================
-   SCROLL REVEAL
-===================================================== */
-
-.reveal{
-    opacity:0;
-    transform:translateY(30px);
-    transition:opacity .8s ease,transform .8s ease;
+/* RESPONSIVE */
+@media(max-width:900px){
+.club-grid,.booking-grid{grid-template-columns:1fr}
+.journey-grid{grid-template-columns:1fr 1fr}
+.info-grid{grid-template-columns:1fr 1fr}
+.gallery-grid{grid-template-columns:1fr 1fr}
 }
-
-.reveal.visible{
-    opacity:1;
-    transform:translateY(0);
+@media(max-width:700px){
+nav{height:70px;padding:0 5%}
+.nav-links{display:none}
+.menu{display:block}
+.mobile-panel{top:70px}
+section{padding:80px 6%}
+.hero{padding-top:120px}
+.hero-logo{width:125px;height:125px}
+h1{letter-spacing:2px}
+.section-head{align-items:flex-start;flex-direction:column}
+.journey-grid{grid-template-columns:1fr}
+.gallery-grid{grid-template-columns:1fr}
+.media.large{grid-column:span 1;grid-row:span 1;min-height:220px}
+.form-row{grid-template-columns:1fr}
 }
-
-/* =====================================================
-   RESPONSIVE
-===================================================== */
-
-@media(max-width:950px){
-
-    .nav-links{
-        display:none;
-    }
-
-    .menu-button{
-        display:block;
-    }
-
-    .club-grid,
-    .booking-layout{
-        grid-template-columns:1fr;
-    }
-
-    .leader-grid{
-        grid-template-columns:1fr 1fr;
-    }
-
-    .history-grid{
-        grid-template-columns:1fr 1fr;
-    }
-
-    .video-grid{
-        grid-template-columns:1fr 1fr;
-    }
-
-    .gallery-grid{
-        grid-template-columns:1fr 1fr;
-    }
+@media(max-width:450px){
+.info-grid{grid-template-columns:1fr}
+.fire{width:90px}
 }
-
-@media(max-width:650px){
-
-    .navbar{
-        padding:0 5%;
-    }
-
-    section{
-        padding:80px 6%;
-    }
-
-    .hero{
-        padding-top:120px;
-    }
-
-    .hero-logo{
-        width:120px;
-        height:120px;
-    }
-
-    .hero h1{
-        letter-spacing:2px;
-    }
-
-    .hero-buttons{
-        flex-direction:column;
-    }
-
-    .button{
-        width:100%;
-    }
-
-    .leader-grid,
-    .history-grid,
-    .video-grid,
-    .form-grid{
-        grid-template-columns:1fr;
-    }
-
-    .gallery-grid{
-        grid-template-columns:1fr 1fr;
-        grid-auto-rows:160px;
-    }
-
-    .gallery-box.large{
-        grid-column:span 2;
-        grid-row:span 1;
-    }
-
-    .section-head{
-        align-items:flex-start;
-        flex-direction:column;
-    }
-
-    .form{
-        padding:22px;
-    }
-
-    .footer{
-        flex-direction:column;
-        text-align:center;
-    }
-
-    .fire{
-        width:100px;
-        opacity:.35;
-    }
-}
-
-@media(max-width:430px){
-
-    .gallery-grid{
-        grid-template-columns:1fr;
-    }
-
-    .gallery-box.large{
-        grid-column:span 1;
-    }
-
-    .brand-name{
-        font-size:12px;
-    }
-}
-
 </style>
 </head>
-
 <body>
-
-<!-- BACKGROUND -->
-
-<div class="background-grid"></div>
-
-<div class="background-glow glow-left"></div>
-<div class="background-glow glow-right"></div>
-
-<div class="fire fire-left"></div>
-<div class="fire fire-right"></div>
-
-
-<!-- LOADER -->
-
+<div class="fire left"></div>
+<div class="fire right"></div>
 <div id="loader">
-    <div class="loader-inner">
-        <div class="loader-ring"></div>
-        <div class="loader-text">VALORIC FC</div>
-    </div>
+<div class="loader-box">
+<div class="loader-ring"></div>
+<h3>VALORIC FC</h3>
 </div>
+</div>
+<nav>
+<a href="#home" class="brand">
+<img src="IMG_2993.jpeg" alt="VALORIC FC">
+VALORIC <span>FC</span>
+</a>
+<ul class="nav-links">
+<li><a href="#club">CLUB</a></li>
+<li><a href="#players">PLAYERS</a></li>
+<li><a href="#journey">JOURNEY</a></li>
+<li><a href="#gallery">GALLERY</a></li>
+<li><a href="#book" class="book-nav">BOOK A MATCH</a></li>
+</ul>
 
-
-<!-- NAVIGATION -->
-
-<nav class="navbar">
-
-    <a href="#home" class="brand">
-
-        <img
-            src="IMG_3002.jpeg"
-            class="logo-small"
-            alt="Valoric FC Logo"
-        >
-
-        <div class="brand-name">
-            VALORIC <span>FC</span>
-        </div>
-
-    </a>
-
-
-    <ul class="nav-links">
-
-        <li>
-            <a href="#about">CLUB</a>
-        </li>
-
-        <li>
-            <a href="#players">SQUAD</a>
-        </li>
-
-        <li>
-            <a href="#history">HISTORY</a>
-        </li>
-
-        <li>
-            <a href="#gallery">GALLERY</a>
-        </li>
-
-        <li>
-            <a href="#highlights">HIGHLIGHTS</a>
-        </li>
-
-        <li>
-            <a href="#book" class="nav-cta">
-                BOOK A MATCH
-            </a>
-        </li>
-
-    </ul>
-
-
-    <button
-        class="menu-button"
-        id="menuButton"
-        aria-label="Open menu"
-    >
-        ☰
-    </button>
+☰
 
 </nav>
-
-
-<!-- MOBILE MENU -->
-
-<div class="mobile-menu" id="mobileMenu">
-
-    <a href="#about">CLUB</a>
-
-    <a href="#players">SQUAD</a>
-
-    <a href="#history">HISTORY</a>
-
-    <a href="#gallery">GALLERY</a>
-
-    <a href="#highlights">HIGHLIGHTS</a>
-
-    <a href="#book">BOOK A MATCH</a>
-
+<div class="mobile-panel" id="mobilePanel">
+<a href="#club" onclick="closeMenu()">CLUB</a>
+<a href="#players" onclick="closeMenu()">PLAYERS</a>
+<a href="#journey" onclick="closeMenu()">JOURNEY</a>
+<a href="#gallery" onclick="closeMenu()">GALLERY</a>
+<a href="#book" onclick="closeMenu()">BOOK A MATCH</a>
 </div>
-
-
-<!-- HERO -->
-
 <section class="hero" id="home">
-
-    <div class="hero-orbit"></div>
-
-    <div class="hero-content reveal">
-
-        <div class="badge">
-
-            <span class="dot"></span>
-
-            ESTABLISHED 2026
-
-        </div>
-
-
-        <img
-            src="IMG_3002.jpeg"
-            class="hero-logo"
-            alt="Valoric FC Logo"
-        >
-
-
-        <h1>
-            VALORIC <span>FC</span>
-        </h1>
-
-
-        <div class="motto">
-            POWERED BY VALOR
-        </div>
-
-
-        <p class="hero-description">
-
-            A football community built on
-            passion, courage, teamwork and
-            ambition. One badge. One identity.
-            One journey.
-
-        </p>
-
-
-        <div class="hero-buttons">
-
-            <a href="#book" class="button primary">
-                ⚡ BOOK A MATCH
-            </a>
-
-            <a href="#players" class="button secondary">
-                MEET THE SQUAD →
-            </a>
-
-        </div>
-
-    </div>
-
-
-    <div class="scroll-down">
-
-        SCROLL
-
-        <div class="scroll-line"></div>
-
-    </div>
-
+<div class="hero-glow"></div>
+<div class="hero-content">
+<div class="badge">
+<span class="dot"></span>
+ESTABLISHED 2026
+</div>
+<img class="hero-logo" src="IMG_2993.jpeg" alt="VALORIC FC LOGO">
+<h1>VALORIC <span>FC</span></h1>
+<div class="motto">POWERED BY VALOR</div>
+<p class="desc">
+Built on passion, teamwork and determination.
+One badge. One identity. One journey.
+</p>
+<div class="buttons">
+<a class="btn primary" href="#book">⚡ BOOK A MATCH</a>
+<a class="btn secondary" href="#players">MEET THE TEAM →</a>
+</div>
+<div class="scroll">SCROLL</div>
+</div>
 </section>
-
-
-<!-- CLUB -->
-
-<section class="club" id="about">
-
-    <div class="container">
-
-        <div class="club-grid">
-
-
-            <div class="reveal">
-
-                <div class="tag">
-                    01 / THE CLUB
-                </div>
-
-                <h2 class="title">
-                    BUILT ON <span>PASSION.</span>
-                </h2>
-
-                <div class="club-text">
-
-                    <p>
-                        <strong>Valoric FC</strong>
-                        is a football community from
-                        Halishahar, Chattogram.
-                    </p>
-
-                    <p>
-                        Founded by
-                        <strong>TAHSIN</strong>,
-                        the club is built around
-                        teamwork, discipline and
-                        the love of football.
-                    </p>
-
-                    <p>
-                        Our identity is simple:
-                        <strong>POWERED BY VALOR.</strong>
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            <div class="club-card reveal">
-
-                <img
-                    src="IMG_3002.jpeg"
-                    alt="Valoric FC"
-                >
-
-            </div>
-
-        </div>
-
-    </div>
-
+<section class="club" id="club">
+<div class="container">
+<div class="club-grid">
+<div>
+<div class="tag">01 / THE CLUB</div>
+<h2 class="title">BUILT ON <span>PASSION</span></h2>
+<div class="club-text">
+<p><strong>VALORIC FC</strong> is a football community built around passion, teamwork and ambition.</p>
+<p>Founded by <strong>TAHSIN</strong>, the club continues to grow with players united under one identity.</p>
+<p><strong>POWERED BY VALOR.</strong></p>
+</div>
+</div>
+<div class="club-card">
+<img src="IMG_2993.jpeg" alt="VALORIC FC">
+</div>
+</div>
+</div>
 </section>
-
-
-<!-- LEADERS -->
-
-<section class="leaders">
-
-    <div class="container">
-
-        <div class="leader-grid">
-
-
-            <div class="leader-card reveal">
-
-                <div class="leader-number">
-                    #10
-                </div>
-
-                <div class="leader-name">
-                    TAHSIN
-                </div>
-
-                <div class="leader-role">
-                    FOUNDER • CAPTAIN
-                </div>
-
-            </div>
-
-
-            <div class="leader-card reveal">
-
-                <div class="leader-number">
-                    #30
-                </div>
-
-                <div class="leader-name">
-                    ABRAR
-                </div>
-
-                <div class="leader-role">
-                    VICE CAPTAIN
-                </div>
-
-            </div>
-
-
-            <div class="leader-card reveal">
-
-                <div class="leader-number">
-                    01
-                </div>
-
-                <div class="leader-name">
-                    TAHSIN / ABRAR
-                </div>
-
-                <div class="leader-role">
-                    MANAGERS
-                </div>
-
-            </div>
-
-
-        </div>
-
-    </div>
-
+<section>
+<div class="container">
+<div class="info-grid">
+<div class="info-card">
+<div class="big">40+</div>
+<div class="small">PLAYERS</div>
+</div>
+<div class="info-card">
+<div class="big">2026</div>
+<div class="small">ESTABLISHED</div>
+</div>
+<div class="info-card">
+<div class="big">TAHSIN</div>
+<div class="small">FOUNDER</div>
+</div>
+<div class="info-card">
+<div class="big">∞</div>
+<div class="small">AMBITION</div>
+</div>
+</div>
+</div>
 </section>
-
-
-<!-- PLAYERS -->
-
 <section class="players" id="players">
-
-    <div class="container">
-
-        <div class="section-head reveal">
-
-            <div>
-
-                <div class="tag">
-                    02 / THE SQUAD
-                </div>
-
-                <h2 class="title">
-                    THE <span>PLAYERS.</span>
-                </h2>
-
-                <p class="description">
-                    The players who wear the badge.
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <div class="players-grid">
-
-
-            <!-- 01 -->
-
-            <div class="player captain reveal">
-
-                <div class="player-top">
-
-                    <div class="number">
-                        10
-                    </div>
-
-                    <div class="jersey">
-                        10
-                    </div>
-
-                </div>
-
-                <div class="player-info">
-
-                    <div class="player-name">
-                        TAHSIN
-                    </div>
-
-                    <div class="player-position">
-                        FORWARD
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <!-- 02 -->
-
-            <div class="player vice reveal">
-
-                <div class="player-top">
-
-                    <div class="number">
-                        30
-                    </div>
-
-                    <div class="jersey">
-                        30
-                    </div>
-
-                </div>
-
-                <div class="player-info">
-
-                    <div class="player-name">
-                        ABRAR
-                    </div>
-
-                    <div class="player-position">
-                        MIDFIELD / FORWARD
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <div class="player reveal">
-                <div class="player-top">
-                    <div class="number">1</div>
-                    <div class="jersey">1</div>
-                </div>
-                <div class="player-info">
-                    <div class="player-name">ADRIYAN</div>
-                    <div class="player-position">GOALKEEPER</div>
-                </div>
-            </div>
-
-
-            <div class="player reveal">
-                <div class="player-top">
-                    <div class="number">2</div>
-                    <div class="jersey">2</div>
-                </div>
-                <div class="player-info">
-                    <div class="player-name">ADIF</div>
-                    <div class="player-position">DEFENSE</div>
-                </div>
-            </div>
-
-
-            <div class="player reveal">
-                <div class="player-top">
-                    <div class="number">3</div>
-                    <div class="jersey">3</div>
-                </div>
-                <div class="player-info">
-                    <div class="player-name">SIJAN</div>
-                    <div class="player-position">DEFENSE</div>
-                </div>
-            </div>
-
-
-            <div class="player reveal">
-                <div class="player-top">
-                    <div class="number">4</div>
-                    <div class="jersey">4</div>
-                </div>
-                <div class="player-info">
-                    <div class="player-name">IFAT</div>
-                    <div class="player-position">DEFENSE</div>
-                </div>
-            </div>
-
-
-            <div class="player reveal">
-                <div class="player-top">
-                    <div class="number">5</div>
-                    <div class="jersey">5</div>
-                </div>
-                <div class="player-info">
-                    <div class="player-name">SAIF</div>
-                    <div class="player-position">MIDFIELD</div>
-                </div>
-            </div>
-
-
-            <div class="player reveal">
-                <div class="player-top">
-                    <div class="number">6</div>
-                    <div class="jersey">6</div>
-                </div>
-                <div class="player-info">
-                    <div class="player-name">SAKIB</div>
-                    <div class="player-position">DEFENSE</div>
-                </div>
-            </div>
-
-
-            <div class="player reveal">
-                <div class="player-top">
-                    <div class="number">6</div>
-                    <div class="jersey">6</div>
-                </div>
-                <div class="player-info">
-                    <div class="player-name">NAZIL</div>
-                    <div class="player-position">DEFENSE</div>
-                </div>
-            </div>
-
-
-            <div class="player reveal">
-                <div class="player-top">
-                    <div class="number">7</div>
-                    <div class="jersey">7</div>
-                </div>
-                <div class="player-info">
-                    <div class="player-name">ELHAM</div>
-                    <div class="player-position">FORWARD</div>
-                </div>
-            </div>
-
-
-            <div class="player reveal">
-                <div class="player-top">
-                    <div class="number">8</div>
-                    <div class="jersey">8</div>
-                </div>
-                <div class="player-info">
-                    <div class="player-name">ROHIT</div>
-                    <div class="player-position">MIDFIELD</div>
-                </div>
-            </div>
-
-
-            <div class="player reveal">
-                <div class="player-top">
-                    <div class="number">9</div>
-                    <div class="jersey">9</div>
-                </div>
-                <div class="player-info">
-                    <div class="player-name">ZARIF</div>
-                    <div class="player-position">MIDFIELD</div>
-                </div>
-            </div>
-
-
-            <div class="player reveal">
-                <div class="player-top">
-                    <div class="number">11</div>
-                    <div class="jersey">11</div>
-                </div>
-                <div class="player-info">
-                    <div class="player-name">AIMAN JR</div>
-                    <div class="player-position">FORWARD</div>
-                </div>
-            </div>
-
-
-            <div class="player reveal">
-                <div class="player-top">
-                    <div class="number">12</div>
-                    <div class="jersey">12</div>
-                </div>
-                <div class="player-info">
-                    <div class="player-name">SADIKIN</div>
-                    <div class="player-position">FORWARD</div>
-                </div>
-            </div>
-
-
-            <div class="player reveal">
-                <div class="player-top">
-                    <div class="number">14</div>
-                    <div class="jersey">14</div>
-                </div>
-                <div class="player-info">
-                    <div class="player-name">IRFANN</div>
-                    <div class="player-position">FORWARD</div>
-                </div>
-            </div>
-
-
-            <div class="player reveal">
-                <div class="player-top">
-                    <div class="number">15</div>
-                    <div class="jersey">15</div>
-                </div>
-                <div class="player-info">
-                    <div class="player-name">SHIHAB</div>
-                    <div class="player-position">MIDFIELD</div>
-                </div>
-            </div>
-
-
-            <div class="player reveal">
-                <div class="player-top">
-                    <div class="number">15</div>
-                    <div class="jersey">15</div>
-                </div>
-                <div class="player-info">
-                    <div class="player-name">NAYEM</div>
-                    <div class="player-position">MIDFIELD</div>
-                </div>
-            </div>
-
-
-            <div class="player reveal">
-                <div class="player-top">
-                    <div class="number">16</div>
-                    <div class="jersey">16</div>
-                </div>
-                <div class="player-info">
-                    <div class="player-name">SEFAT</div>
-                    <div class="player-position">MIDFIELD</div>
-                </div>
-            </div>
-
-
-            <div class="player reveal">
-                <div class="player-top">
-                    <div class="number">17</div>
-                    <div class="jersey">17</div>
-                </div>
-                <div class="player-info">
-                    <div class="player-name">ASHRAFI</div>
-                    <div class="player-position">MIDFIELD</div>
-                </div>
-            </div>
-
-
-            <div class="player reveal">
-                <div class="player-top">
-                    <div class="number">19</div>
-                    <div class="jersey">19</div>
-                </div>
-                <div class="player-info">
-                    <div class="player-name">LABIB</div>
-                    <div class="player-position">DEFENSE</div>
-                </div>
-            </div>
-
-
-            <div class="player reveal">
-                <div class="player-top">
-                    <div class="number">21</div>
-                    <div class="jersey">21</div>
-                </div>
-                <div class="player-info">
-                    <div class="player-name">ZAWAD</div>
-                    <div class="player-position">DEFENSE</div>
-                </div>
-            </div>
-
-
-            <div class="player reveal">
-                <div class="player-top">
-                    <div class="number">22</div>
-                    <div class="jersey">22</div>
-                </div>
-                <div class="player-info">
-                    <div class="player-name">FARSATH</div>
-                    <div class="player-position">MIDFIELD</div>
-                </div>
-            </div>
-
-
-            <div class="player reveal">
-                <div class="player-top">
-                    <div class="number">23</div>
-                    <div class="jersey">23</div>
-                </div>
-                <div class="player-info">
-                    <div class="player-name">MAHMUD</div>
-                    <div class="player-position">GOALKEEPER</div>
-                </div>
-            </div>
-
-
-            <div class="player reveal">
-                <div class="player-top">
-                    <div class="number">24</div>
-                    <div class="jersey">24</div>
-                </div>
-                <div class="player-info">
-                    <div class="player-name">SAMI
+<div class="container">
+<div class="section-head">
+<div>
+<div class="tag">02 / THE SQUAD</div>
+<h2 class="title">MEET THE <span>PLAYERS</span></h2>
+<p class="desc">The players who wear the VALORIC FC badge.</p>
+</div>
+</div>
+<div class="players-grid">
+<div class="player captain">
+<div class="number">10</div>
+<h3>TAHSIN</h3>
+<div class="position">FORWARD • CAPTAIN</div>
+</div>
+<div class="player captain">
+<div class="number">30</div>
+<h3>ABRAR</h3>
+<div class="position">MIDFIELD / FORWARD • VICE CAPTAIN</div>
+</div>
+<div class="player">
+<div class="number">1</div>
+<h3>ADRIYAN</h3>
+<div class="position">GOALKEEPER</div>
+</div>
+<div class="player">
+<div class="number">2</div>
+<h3>ADIF</h3>
+<div class="position">DEFENSE</div>
+</div>
+<div class="player">
+<div class="number">3</div>
+<h3>SIJAN</h3>
+<div class="position">DEFENSE</div>
+</div>
+<div class="player">
+<div class="number">4</div>
+<h3>IFAT</h3>
+<div class="position">DEFENSE</div>
+</div>
+<div class="player">
+<div class="number">5</div>
+<h3>SAIF</h3>
+<div class="position">MIDFIELD</div>
+</div>
+<div class="player">
+<div class="number">6</div>
+<h3>SAKIB</h3>
+<div class="position">DEFENSE</div>
+</div>
+<div class="player">
+<div class="number">6</div>
+<h3>NAZIL</h3>
+<div class="position">DEFENSE</div>
+</div>
+<div class="player">
+<div class="number">7</div>
+<h3>ELHAM</h3>
+<div class="position">FORWARD</div>
+</div>
+<div class="player">
+<div class="number">8</div>
+<h3>ROHIT</h3>
+<div class="position">MIDFIELD</div>
+</div>
+<div class="player">
+<div class="number">9</div>
+<h3>ZARIF</h3>
+<div class="position">MIDFIELD</div>
+</div>
+<div class="player">
+<div class="number">11</div>
+<h3>AIMAN JR</h3>
+<div class="position">FORWARD</div>
+</div>
+<div class="player">
+<div class="number">12</div>
+<h3>SADIKIN</h3>
+<div class="position">FORWARD</div>
+</div>
+<div class="player">
+<div class="number">14</div>
+<h3>IRFANN</h3>
+<div class="position">FORWARD</div>
+</div>
+<div class="player">
+<div class="number">15</div>
+<h3>SHIHAB</h3>
+<div class="position">MIDFIELD</div>
+</div>
+<div class="player">
+<div class="number">15</div>
+<h3>NAYEM</h3>
+<div class="position">MIDFIELD</div>
+</div>
+<div class="player">
+<div class="number">16</div>
+<h3>SEFAT</h3>
+<div class="position">MIDFIELD</div>
+</div>
+<div class="player">
+<div class="number">17</div>
+<h3>ASHRAFI</h3>
+<div class="position">MIDFIELD</div>
+</div>
+<div class="player">
+<div class="number">19</div>
+<h3>LABIB</h3>
+<div class="position">DEFENSE</div>
+</div>
+<div class="player">
+<div class="number">21</div>
+<h3>ZAWAD</h3>
+<div class="position">DEFENSE</div>
+</div>
+<div class="player">
+<div class="number">22</div>
+<h3>FARSATH</h3>
+<div class="position">MIDFIELD</div>
+</div>
+<div class="player">
+<div class="number">23</div>
+<h3>MAHMUD</h3>
+<div class="position">GOALKEEPER</div>
+</div>
+<div class="player">
+<div class="number">24</div>
+<h3>SAMI</h3>
+<div class="position">DEFENSE / GK</div>
+</div>
+<div class="player">
+<div class="number">25</div>
+<h3>SEYAMZZ</h3>
+<div class="position">MIDFIELD / FORWARD</div>
+</div>
+<div class="player">
+<div class="number">26</div>
+<h3>SHORIF</h3>
+<div class="position">DEFENSE</div>
+</div>
+<div class="player">
+<div class="number">28</div>
+<h3>ANIF</h3>
+<div class="position">DEFENSE</div>
+</div>
+<div class="player">
+<div class="number">28</div>
+<h3>FARDIN</h3>
+<div class="position">MIDFIELD</div>
+</div>
+<div class="player">
+<div class="number">31</div>
+<h3>MAHMUD.AZ</h3>
+<div class="position">UNIDENTIFIED</div>
+</div>
+<div class="player">
+<div class="number">32</div>
+<h3>ZARIF</h3>
+<div class="position">UNIDENTIFIED</div>
+</div>
+<div class="player">
+<div class="number">34</div>
+<h3>NOBOBI</h3>
+<div class="position">UNIDENTIFIED</div>
+</div>
+<div class="player">
+<div class="number">67</div>
+<h3>ABRAR</h3>
+<div class="position">MIDFIELD</div>
+</div>
+<div class="player">
+<div class="number">80</div>
+<h3>A.ALIF</h3>
+<div class="position">DEFENSE</div>
+</div>
+<div class="player">
+<div class="number">999</div>
+<h3>TAMIM</h3>
+<div class="position">FORWARD</div>
+</div>
+</div>
+</div>
+</section>
+<section id="journey">
+<div class="container">
+<div class="tag">03 / MATCH HISTORY</div>
+<h2 class="title">EVERY MATCH. <span>MORE HISTORY.</span></h2>
+<p class="desc">
+The journey of VALORIC FC has only begun.
+</p>
+<div class="scorer">
+🏆 <strong>TOP SCORER:</strong> TAHSIN — #10
+</div>
+<div class="journey-grid">
+<div class="journey-card">
+<div class="journey-icon">🏆</div>
+<h3>TOURNAMENT JOURNEY</h3>
+<p>Add tournament victories and achievements here as VALORIC FC continues to grow.</p>
+</div>
+<div class="journey-card">
+<div class="journey-icon">⚽</div>
+<h3>MATCH RECORDS</h3>
+<p>Record important victories, memorable matches and club milestones here.</p>
+</div>
+<div class="journey-card">
+<div class="journey-icon">🚀</div>
+<h3>THE FUTURE</h3>
+<p>Bigger matches. Bigger challenges. The journey continues.</p>
+</div>
+</div>
+</div>
+</section>
+<section class="gallery" id="gallery">
+<div class="container">
+<div class="tag">04 / THE MOMENTS</div>
+<h2 class="title">VALORIC <span>GALLERY</span></h2>
+<p class="desc">Photos, videos and highlights from the journey.</p>
+<div class="gallery-grid">
+<div class="media large">
+<img src="IMG_3002.jpeg" alt="VALORIC FC">
+</div>
+<div class="media">⚽<br>MATCH DAY PHOTO</div>
+<div class="media">🏃<br>TRAINING PHOTO</div>
+<div class="media">🏆<br>ACHIEVEMENT</div>
+<div class="media">🎥<br>VIDEO HIGHLIGHT</div>
+</div>
+</div>
+</section>
+<section class="booking" id="book">
+<div class="container">
+<div class="booking-grid">
+<div>
+<div class="tag">05 / CHALLENGE US</div>
+<h2 class="title">BOOK A <span>MATCH</span></h2>
+<p class="desc">
+Think your team is ready?
+Send VALORIC FC your match request.
+</p>
+<ul class="points">
+<li><span>✓</span> Name, team, phone and date required</li>
+<li><span>✓</span> Location is optional</li>
+<li><span>✓</span> Match type is optional</li>
+<li><span>✓</span> Request sent to the VALORIC FC contact email</li>
+</ul>
+</div>
+<div class="form">
+<form action="https://formsubmit.co/fcvaloric@gmail.com" method="POST">
+<input type="hidden" name="_subject" value="NEW VALORIC FC MATCH REQUEST">
+<input type="hidden" name="_template" value="table">
+<input type="hidden" name="_captcha" value="true">
+<input type="hidden" name="_next" value="https://valoricfc.github.io/">
+<div class="form-row">
+<div class="group">
+<label>CONTACT NAME <span class="required">*</span></label>
+<input type="text" name="Contact Name" placeholder="Full name" required>
+</div>
+<div class="group">
+<label>TEAM NAME <span class="required">*</span></label>
+<input type="text" name="Team Name" placeholder="Your team" required>
+</div>
+</div>
+<div class="form-row">
+<div class="group">
+<label>PHONE NUMBER <span class="required">*</span></label>
+<input type="tel" name="Phone Number" placeholder="+880..." required>
+</div>
+<div class="group">
+<label>PREFERRED DATE <span class="required">*</span></label>
+<input type="date" name="Preferred Date" required>
+</div>
+</div>
+<div class="group">
+<label>MATCH TYPE <span class="optional">(OPTIONAL)</span></label>
+<select name="Match Type">
+<option value="">Not specified</option>
+<option>Friendly Match</option>
+<option>Competitive Match</option>
+<option>Tournament Invitation</option>
+<option>Other</option>
+</select>
+</div>
+<div class="group">
+<label>LOCATION & DETAILS <span class="optional">(OPTIONAL)</span></label>
+<textarea name="Location and Details" placeholder="Location, preferred time and anything else..."></textarea>
+</div>
+<p class="form-note">
+Your name, team name, phone number and preferred date are required.
+Location and match type are optional.
+</p>
+<button class="btn primary" type="submit">
+⚡ SEND MATCH REQUEST
+</button>
+</form>
+</div>
+</div>
+</div>
+</section>
+<section class="support">
+<div class="container">
+<div class="support-box">
+<div class="tag">VALORIC FAMILY</div>
+<h2 class="title">FOLLOW THE <span>JOURNEY</span></h2>
+<p class="desc">
+Follow VALORIC FC and stay connected with the team.
+</p>
+<div class="socials">
+<a class="social" href="https://www.instagram.com/valoric_fc/" target="_blank">
+📸 INSTAGRAM
+</a>
+<a class="social" href="https://www.instagram.com/valoric_fc/" target="_blank">
+💬 CONTACT
+</a>
+</div>
+</div>
+</div>
+</section>
+<footer>
+<div class="footer-name">
+VALORIC <span>FC</span>
+</div>
+<p>© 2026 VALORIC FC • POWERED BY VALOR</p>
+</footer>
+
+↑
+
+<script>
+/* LOADER */
+window.addEventListener("load",function(){
+setTimeout(function(){
+document.getElementById("loader").style.opacity="0";
+document.getElementById("loader").style.visibility="hidden";
+},700);
+});
+/* MOBILE MENU */
+function toggleMenu(){
+document.getElementById("mobilePanel").classList.toggle("open");
+}
+function closeMenu(){
+document.getElementById("mobilePanel").classList.remove("open");
+}
+/* BACK TO TOP */
+window.addEventListener("scroll",function(){
+document.getElementById("top").style.display =
+window.scrollY>500 ? "flex" : "none";
+});
+/* PREVENT OLD DATES */
+const dateInput=document.querySelector('input[type="date"]');
+if(dateInput){
+const today=new Date().toISOString().split("T")[0];
+dateInput.min=today;
+}
+</script>
+</body>
+</html>
